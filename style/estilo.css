@@ -81,7 +81,7 @@ html, body {
     font-size: 20px;
 }
 
-.solucao input{
+.opcoes .seunome{
     height: 50px;
     width: 200px;
     border-top-left-radius: 20px; /* arredonda o canto superior esquerdo */
@@ -101,7 +101,7 @@ input::placeholder { /*pseudoclasse */
     background-color: #808080;
 }
 
-.solucao select{
+.opcoes select{
     height: 52px;
     width: 200px;
     border: none;
@@ -152,7 +152,7 @@ button{
     object-fit: cover; /* Garantir que a imagem se ajuste sem distorção */
 }
 
-input{
+.inputCadastro{
     height: 13%;
     width: 80%;
     border: none;
