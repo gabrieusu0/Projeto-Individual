@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+
+}
+
+.header{
+    display: flex;
+    width: 100%;
+    height: 8%;
+    background-color: #1c1c19;
+}
+
+.elementos{
+    display: flex;
+    margin: 0 auto;
+    width: 80%;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.elementos p{
+    font-size: 25px;
+    color: white;
+}
+
+.elementos button{
+    width: 90px;
+    height: 35px;
+    border-radius: 30px;
+    border: none;
+    background-color: #F40808;
+    font-size: 15px;
+}
+
+/* BANNER */
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7); /* Cor preta com 50% de opacidade */
+  }
+
+.banner::before { /*before indica algo que vem antes, ou seja, atras do banner*/
+    content: ""; /*obrigatório*/
+    position: absolute; /*mesmo tamanho do elemento .banner e deixar o texto sobreposto*/
+    inset: 0; /*Essa propriedade equivale à top: 0; right: 0; bottom: 0; left: 0.*/
+    background-image: url('../img/inicial(corte).jpg');
+    background-size: cover; /* imagem ocupe toda a área*/
+    background-position: bottom; /*deixa a parte de baixo mais visivel*/
+    z-index: -2; /*pra forçar a imagem a ir "pra baixo" do texto*/
+}
+
+.banner .container {
+    display: flex;
+    flex-direction: column; /* Coloca os elementos em uma coluna */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 80%;
+}
+
+/* Texto principal */
+.banner .container p {
+    font-size: 60px;
+    font-family: 'Lora', serif;
+    margin: 20px 0;
+    color: white;
+}
+
+.solucao{
+    font-size: 20px;
+}
+
+.solucao input{
+    height: 50px;
+    width: 200px;
+    border-top-left-radius: 20px; /* arredonda o canto superior esquerdo */
+    border-bottom-left-radius: 20px; 
+    border: none;
+    font-size: 15px;
+}
+
+input::placeholder { /*pseudoclasse */
+    color: black; 
+    text-align: center;
+}
+
+.separador{
+    height: 52px;
+    width: 1px;
+    background-color: #808080;
+}
+
+.solucao select{
+    height: 52px;
+    width: 200px;
+    border: none;
+    font-size: 15px;
+    padding: 10px;
+    margin-right: 20px;
+}
+
+button{
+    height: 50px;
+    width: 200px;
+    border-radius: 20px;
+    border: none;
+    background-color: #8461EC;
+    color: white;
+    font-size: 20px;
+}
+
+.opcoes{
+    display: flex;
+}
+
+
+/* CADASTRO */
+.principal{
+    display: flex;
+    flex-direction: row; /*ISSO QUE DEIXOU A IMAGEM AO LADO*/
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cadastro {
+    width: 60vh;
+    height: 70vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e6e6e6;
+    font-family: 'Lora', sans-serif;
+    margin-left: 150px;
+    margin-bottom: 80px;
+}
+
+.imagemCadastro {
+    width: 50vw; /* Ocupará metade da largura da tela */
+    height: 100vh; /* Ocupará toda a altura da tela */
+    object-fit: cover; /* Garantir que a imagem se ajuste sem distorção */
+}
+
+input{
+    height: 13%;
+    width: 80%;
+    border: none;
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+/*LOGIN*/
+
+.login {
+    display: flex;
+    width: 60vh;
+    height: 70vh;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e6e6e6;
+    font-family: 'Lora', sans-serif;
+    margin-left: 150px;
+    margin-bottom: 80px;
+}
