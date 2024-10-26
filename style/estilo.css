@@ -173,3 +173,74 @@ button{
     margin-left: 150px;
     margin-bottom: 80px;
 }
+
+
+/* PREFERE */
+
+/* BANNER */
+.banner_prefere {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7); /* Cor preta com 50% de opacidade */
+  }
+
+.banner_prefere::before { /*before indica algo que vem antes, ou seja, atras do banner*/
+    content: ""; /*obrigatório*/
+    position: absolute; /*mesmo tamanho do elemento .banner e deixar o texto sobreposto*/
+    inset: 0; /*Essa propriedade equivale à top: 0; right: 0; bottom: 0; left: 0.*/
+    background-image: url('../img/cortina.png');
+    background-size: cover; /* imagem ocupe toda a área*/
+    background-position: bottom; /*deixa a parte de baixo mais visivel*/
+    z-index: -2; /*pra forçar a imagem a ir "pra baixo" do texto*/
+}
+
+.banner_prefere .container {
+    display: flex;
+    flex-direction: column; /* Coloca os elementos em uma coluna */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 80%;
+}
+
+/* Texto principal */
+.banner_prefere .container p {
+    font-size: 40px;
+    font-family: 'Lora', serif;
+    margin: 20px 0;
+    color: white;
+}
+
+.procura{
+    display: flex;
+    height: 50%;
+    width: 70%;
+    justify-content: space-between;
+}
+
+.procura img{
+    height: 250px;
+    width: 350px;
+}
+
+.img1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.img2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* SITE MESMO */
