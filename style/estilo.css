@@ -5,7 +5,11 @@ html, body {
     padding: 0;
     height: 100%;
     overflow: hidden;
+    scroll-behavior: smooth;
+}
 
+body::-webkit-scrollbar {
+    display: none; /* Oculta a barra de rolagem no Webkit */
 }
 
 .header{
@@ -47,18 +51,11 @@ html, body {
     width: 100%;
     position: relative;
     color: white;
-    background-color: rgba(0, 0, 0, 0.7); /* Cor preta com 50% de opacidade */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/inicial.jpg'); /* Cor preta com 50% de opacidade */
+    background-size: cover; /* imagem ocupe toda a área*/
   }
 
-.banner::before { /*before indica algo que vem antes, ou seja, atras do banner*/
-    content: ""; /*obrigatório*/
-    position: absolute; /*mesmo tamanho do elemento .banner e deixar o texto sobreposto*/
-    inset: 0; /*Essa propriedade equivale à top: 0; right: 0; bottom: 0; left: 0.*/
-    background-image: url('../img/inicial(corte).jpg');
-    background-size: cover; /* imagem ocupe toda a área*/
-    background-position: bottom; /*deixa a parte de baixo mais visivel*/
-    z-index: -2; /*pra forçar a imagem a ir "pra baixo" do texto*/
-}
+
 
 .banner .container {
     display: flex;
@@ -244,3 +241,179 @@ button{
 
 
 /* SITE MESMO */
+.banner_row {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7); /* Cor preta com 50% de opacidade */
+  }
+
+.banner_row::before { /*before indica algo que vem antes, ou seja, atras do banner*/
+    content: ""; /*obrigatório*/
+    position: absolute; /*mesmo tamanho do elemento .banner e deixar o texto sobreposto*/
+    inset: 0; /*Essa propriedade equivale à top: 0; right: 0; bottom: 0; left: 0.*/
+    background-image: url('../img/dana.jpg');
+    background-size: cover; /* imagem ocupe toda a área*/
+    background-position: bottom; /*deixa a parte de baixo mais visivel*/
+    z-index: -2; /*pra forçar a imagem a ir "pra baixo" do texto*/
+}
+
+.banner_row .container {
+    display: flex;
+    flex-direction: column; /* Coloca os elementos em uma coluna */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 80%;
+}
+
+/* Texto principal */
+.banner_row .container p {
+    font-size: 40px;
+    font-family: 'Lora', serif;
+    margin: 20px 0;
+    color: white;
+}
+
+
+
+/* IMPORTANTE */
+
+.importancia{
+    height: 100vh;
+    width: 100%;
+}
+.importancia p {
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Lora', serif;
+}
+
+/* UM */
+
+
+.principal_impacto{
+    display: flex;
+    width: 100%;
+    flex-direction: row; /*ISSO QUE DEIXOU A IMAGEM AO LADO*/
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+}
+
+.imagem_impacto {
+    width: 50vw; /* Ocupará metade da largura da tela */
+    height: 100vh; /* Ocupará toda a altura da tela */
+    object-fit: cover; /* Garantir que a imagem se ajuste sem distorção */
+}
+
+.texto{
+    display: flex;
+    flex-direction: column;
+    width: 100vh;
+    height: 100vh;
+    align-items: center;
+}
+
+.principal_impacto .texto p{
+    margin-top: 100px;
+    color: white;
+    font-size: 25px;
+    padding: 20px;
+}
+
+.principal_impacto .texto button{
+    margin-top: 30px
+}
+
+
+
+
+/* REVERSO */
+
+.principal_impacto2{
+    display: flex;
+    flex-direction: row-reverse; /*ISSO QUE DEIXOU A IMAGEM AO LADO*/
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+}
+
+.imagem_impacto2 {
+    width: 50vw; /* Ocupará metade da largura da tela */
+    height: 100vh; /* Ocupará toda a altura da tela */
+    object-fit: cover; /* Garantir que a imagem se ajuste sem distorção */
+}
+
+.texto2{
+    display: flex;
+    flex-direction: column;
+    width: 100vh;
+    height: 100vh;
+    align-items: center;
+}
+
+.principal_impacto2 .texto2 p{
+    margin-top: 50px;
+    color: white;
+    font-size: 25px;
+    padding: 20px;
+}
+
+.principal_impacto2 .texto2 button{
+    margin-top: 50px
+}
+
+.importancia2{
+    height: 100vh;
+    width: 100%;
+}
+.importancia2 p {
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Lora', serif;
+    margin: 20px 0;
+}
+
+
+/* gratuitas */
+.gratuito{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+.gratuito p {
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Lora', serif;
+}
+
+.gratis {
+    display: flex;
+    height: 100%;
+    width: 80%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.gratis .paragrafo {
+    margin-left: 100px;
+    text-align: center;
+    font-size: 26px;
+    font-family: 'Lora', serif;
+}
+
+.logo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    align-items: center;
+}
