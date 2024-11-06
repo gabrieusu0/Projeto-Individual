@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que busca?</title>
+    <link rel="stylesheet" href="style/estilo.css">
+
+</head>
+<body>
+    <div class="header">
+        <div class="elementos">
+            <p>ELBI</p>
+            <button>LOGIN</button>
+        </div>
+    </div>
+        <div class="principal">
+            <div class="cadastro">
+                <div class="questoes">
+                    <p>QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?</p>
+                    <input type="number" id="ipt_pergunta1" class="inputCadastro">
+                    
+                    <p>QUAL SEU GÊNERO FAVORITO?</p>
+                    <select class="inputCadastro" id="slc_respostas">
+                        <option value="">GÊNEROS</option>
+                        <option value="Teatro de sombras">Teatro de sombras</option>
+                        <option value="Teatro de fantoches ou marionetes">Teatro de fantoches ou marionetes</option>
+                        <option value="Stand-up comedy">Stand-up comedy</option>
+                        <option value="Tragédia">Tragédia</option>
+                        <option value="Musical">Musical</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Comédia">Comédia</option>
+                    </select>
+                    <p>QUANTAS VEZES FOI?</p>
+                    <input type="number" id="ipt_pergunta3" class="inputCadastro">
+                    <button onclick="guardarPerguntas()" class="button" ><a href="cadastro.html">Cadastre já</a></button>        
+                </div>
+            </div>
+            <div>
+                <img class="imagemCadastro" src="img/cadastro2.jpg" alt="imagem ilustrativa da inserção do login">
+            </div> <!-- A TAG ESTÁ FORA DA DIV CADASTRO MAS DENTRO DA PRINCIPAL-->
+    </div>
+        <div class="quadrado">
+            <span style="font-size: 25px; margin-top: 10px;">Responda algumas perguntas:</span>
+
+        </div>
+</body>
+</html>
+<script src="cadastrar.js">
+
+</script>

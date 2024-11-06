@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Elbi</title>
+    <link rel="stylesheet" href="style/estilo.css">
+</head>
+<body>
+    <div class="header">
+        <div class="elementos">
+            <p>ELBI</p>
+            <button>INICIO</button>
+        </div>
+    </div>
+    <div class="principal">
+        <div class="login"> <br><br><br><br>
+            <h1>LOGIN</h1>
+        <input type="text" id="ipt_email" class="inputCadastro" placeholder="Informe seu email:"><br>
+        <div id="cardErro"></div> <br>
+        <input type="password" id="ipt_senha" class="inputCadastro" placeholder="Informe sua senha:"><br>
+        <div id="cardErro"></div> <br>
+        <button class="button" onclick="entrar()">Cadastrar</button> <br>
+        <div id="mensagem_erro"></div>
+
+        </div>
+        <div>
+            <img class="imagemCadastro" src="img/login.jpg" alt="imagem ilustrativa da inserção do login">
+        </div> <!-- A TAG ESTÁ FORA DA DIV CADASTRO MAS DENTRO DA PRINCIPAL-->
+</div>
+</body>
+</html>
+
+<script>
+
+    function entrar() {
+
+        var emailVar = ipt_email.value;
+        var senhaVar = ipt_senha.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            return false;
+        }
+        else {
+            setInterval(5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    setTimeout(function () {
+                        window.location = "prefere.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+</script>
