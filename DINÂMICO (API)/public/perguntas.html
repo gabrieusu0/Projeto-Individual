@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="style/estilo.css">
 
 </head>
-<body>
+<body onload="carregarPerguntas()">
     <div class="header">
         <div class="elementos">
             <p>ELBI</p>
-            <button>LOGIN</button>
+            <a href="login.html"><button>LOGIN</button></a>
         </div>
     </div>
         <div class="principal">
-            <div class="cadastro">
+            <div id="div_sim" style="display: none;" class="cadastro">
                 <div class="questoes">
                     <p>QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?</p>
                     <input type="number" id="ipt_pergunta1" class="inputCadastro">
@@ -34,6 +34,91 @@
                     </select>
                     <p>QUANTAS VEZES FOI?</p>
                     <input type="number" id="ipt_pergunta3" class="inputCadastro">
+                    <button onclick="guardarPerguntas()" class="button">Cadastre já</button>        
+                </div>
+            </div>
+
+<!-- Perguntas "Não" -->
+
+            <div id="div_nao" style="display: none;" class="cadastro">
+                <div class="questoes">
+                    <p>QUAL SEU ESTADO?</p>
+                    <select class="inputCadastro" id="slc_respostas4">
+                        <option value="">ESTADOS</option>
+                        <option value="Acre">Acre</option>
+                        <option value="Alagoas">Alagoas</option>
+                        <option value="Amazonas">Amazonas</option>
+                        <option value="Bahia">Bahia</option>
+                        <option value="Ceará">Ceará</option>
+                        <option value="Espírito Santo">Espírito Santo</option>
+                        <option value="Goiás">Goiás</option>
+                        <option value="Maranhão">Maranhão</option>
+                        <option value="Mato Grosso">Mato Grosso</option>
+                        <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                        <option value="Minas Gerais">Minas Gerais</option>
+                        <option value="Pará">Pará</option>
+                        <option value="Paraíba">Paraíba</option>
+                        <option value="Paraná">Paraná</option>
+                        <option value="Pernambuco">Pernambuco</option>
+                        <option value="Piauí">Piauí</option>
+                        <option value="Rio de Janeiro">Rio de Janeiro</option>
+                        <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                        <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                        <option value="Rondônia">Rondônia</option>
+                        <option value="Roraima">Roraima</option>
+                        <option value="Santa Catarina">Santa Catarina</option>
+                        <option value="São Paulo">São Paulo</option>
+                        <option value="Sergipe">Sergipe</option>
+                        <option value="Tocantins">Tocantins</option>
+                        <option value="Distrito Federal">Distrito Federal</option>
+                    </select>
+                    
+                    <p>QUAL TIPO DE EVENTO CULTURAL MAIS DE INTERESSA?</p>
+                    <select class="inputCadastro" id="slc_respostas5">
+                        <option value="">Eventos</option>
+                        <option value="Exposição de Arte">Exposição de Arte</option>
+                        <option value="Festival de Música">Festival de Música</option>
+                        <option value="Teatro">Teatro</option>
+                        <option value="Dança">Dança</option>
+                        <option value="Cinema">Cinema</option>
+                        <option value="Literatura">Literatura</option>
+                        <option value="Festa Popular">Festa Popular</option>
+                        <option value="Feira de Artesanato">Feira de Artesanato</option>
+                        <option value="Shows ao Vivo">Shows ao Vivo</option>
+                        <option value="Cultura Gastronômica">Cultura Gastronômica</option>
+                        <option value="Sarau Literário">Sarau Literário</option>
+                        <option value="Oficina Cultural">Oficina Cultural</option>
+                        <option value="Carnaval">Carnaval</option>
+                        <option value="Performance Artística">Performance Artística</option>
+                        <option value="Concerto">Concerto</option>
+                        <option value="Palestra Cultural">Palestra Cultural</option>
+                        <option value="Lançamento de Livro">Lançamento de Livro</option>
+                        <option value="Ciclo de Filmes">Ciclo de Filmes</option>
+                        <option value="Mostra de Cinema">Mostra de Cinema</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                    
+                    <p>QUAL MOTIVO PARA VOCÊ NUNCA TER IDO?</p>
+                    <select class="inputCadastro" id="slc_respostas6">
+                        <option value="">MOTIVOS</option>
+                        <option value="Nunca tive interesse em teatro">Nunca tive interesse em teatro</option>
+                        <option value="Falta de tempo">Falta de tempo</option>
+                        <option value="Não gosto de peças teatrais">Não gosto de peças teatrais</option>
+                        <option value="Não tenho companhia para ir">Não tenho companhia para ir</option>
+                        <option value="Preços elevados dos ingressos">Preços elevados dos ingressos</option>
+                        <option value="Falta de opções de teatro na minha cidade">Falta de opções de teatro na minha cidade</option>
+                        <option value="Não sei onde comprar ingressos">Não sei onde comprar ingressos</option>
+                        <option value="Acredito que o teatro não é para mim">Acredito que o teatro não é para mim</option>
+                        <option value="Sempre escolho outras formas de lazer">Sempre escolho outras formas de lazer</option>
+                        <option value="Problemas de acessibilidade">Problemas de acessibilidade</option>
+                        <option value="Não estou familiarizado com a programação cultural">Não estou familiarizado com a programação cultural</option>
+                        <option value="Não sei o que esperar de uma peça de teatro">Não sei o que esperar de uma peça de teatro</option>
+                        <option value="Acho que é um tipo de cultura elitista">Acho que é um tipo de cultura elitista</option>
+                        <option value="Nunca me convidaram para ir">Nunca me convidaram para ir</option>
+                        <option value="Outros">Outros</option>
+                        
+                        
+                    </select>
                     <button onclick="guardarPerguntas()" class="button" ><a href="cadastro.html">Cadastre já</a></button>        
                 </div>
             </div>

@@ -1,8 +1,14 @@
 var nome = sessionStorage.getItem("nomeMesmo");
 var jafoi = sessionStorage.getItem("jafoiMesmo");
-var pergunta1 = sessionStorage.getItem("Pergunta1Mesmo")
-var pergunta2 = sessionStorage.getItem("Pergunta2Mesmo")
-var pergunta3 = sessionStorage.getItem("Pergunta3Mesmo")
+var pergunta1 = sessionStorage.getItem("Pergunta1Mesmo");
+var pergunta2 = sessionStorage.getItem("Pergunta2Mesmo");
+var pergunta3 = sessionStorage.getItem("Pergunta3Mesmo");
+var pergunta4 = sessionStorage.getItem("Pergunta4Mesmo");
+var pergunta5 = sessionStorage.getItem("Pergunta5Mesmo");
+var pergunta6 = sessionStorage.getItem("Pergunta6Mesmo");
+var fkPergunta1;
+var fkPergunta2;
+var fkPergunta3;
 var usuario;
 var email;
 var senha;
@@ -21,6 +27,16 @@ function cadastrar() {
     senha = senhaCad;
 
     console.log(usuario)
+
+    if (jafoi == 'sim') {
+        fkPergunta1 = sessionStorage.getItem("fkPergunta1Mesmo");
+        fkPergunta2 = sessionStorage.getItem("fkPergunta2Mesmo");
+        fkPergunta3 = sessionStorage.getItem("fkPergunta3Mesmo");
+    }else{
+        fkPergunta1 = sessionStorage.getItem("fkPergunta4Mesmo");
+        fkPergunta2 = sessionStorage.getItem("fkPergunta5Mesmo");
+        fkPergunta3 = sessionStorage.getItem("fkPergunta6Mesmo");
+    }
 
 
 
@@ -50,18 +66,38 @@ function cadastrar() {
             pergunta1Server: pergunta1,
             pergunta2Server: pergunta2,
             pergunta3Server: pergunta3,
+            fkPergunta1Server: fkPergunta1,
+            fkPergunta2Server: fkPergunta2,
+            fkPergunta3Server: fkPergunta3,
             usuarioServer: usuario
             // senhaConfirmadaServer: confirmacaoSenha
 
         }),
+    }).then(function (resposta){
+        if (resposta.ok) {
+            mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+            
+            setTimeout(() => {
+            window.location = "login.html";
+            }, "2000");
+        }else{
+            alert(`Usuário ou email já cadastrados`)
+        }
     })
-    console.log(jafoi)
+    // .catch(function (resposta) {
+    //     console.log(`#ERRO: ${resposta}`);
+    //     alert(`#ERRO: ${resposta}, Usuário ou email já cadastrados`)
+    //   });
 
-    setTimeout(() => {
-        window.location = "login.html";
-    }, "2000");
+    console.log(jafoi)
+    
+
+
+
 
 }
+
 
 function guardarIndex() {
     var nomeIndex = document.getElementById("input_nome").value;
@@ -84,28 +120,94 @@ function guardarIndex() {
     // alert(`${jafoiIndex} armazenado no session storage`)
     jafoi = sessionStorage.getItem("jafoiMesmo");
 
-
-
 }
+
+
+function carregarPerguntas(){
+
+    jafoi = sessionStorage.getItem("jafoiMesmo");
+
+    if (jafoi == 'sim') {
+        div_sim.style.display = "flex";
+    }else{
+        div_nao.style.display = "flex";
+    }
+}
+
 
 function guardarPerguntas() {
 
-    var Pergunta1Index = document.getElementById("ipt_pergunta1").value;
-    var Pergunta2Index = document.getElementById("slc_respostas").value;
-    var Pergunta3Index = document.getElementById("ipt_pergunta3").value;
+    if (div_sim.style.display == "flex") {
 
-    sessionStorage.setItem("Pergunta1Mesmo", Pergunta1Index);
-    // alert(`${Pergunta1Index} armazenado no session storage`)
-    pergunta1 = sessionStorage.getItem("Pergunta1Mesmo");
+        var fkPergunta1Index = 1;
+        sessionStorage.setItem("fkPergunta1Mesmo", fkPergunta1Index);
+        // fkPergunta1 = sessionStorage.getItem("fkPergunta1Mesmo");
 
-    sessionStorage.setItem("Pergunta2Mesmo", Pergunta2Index);
-    // alert(`${Pergunta2Index} armazenado no session storage`)
-    pergunta2 = sessionStorage.getItem("Pergunta2Mesmo");
+        var fkPergunta2Index = 2;
+        sessionStorage.setItem("fkPergunta2Mesmo", fkPergunta2Index);
+        // fkPergunta2 = sessionStorage.getItem("fkPergunta2Mesmo");
 
-    sessionStorage.setItem("Pergunta3Mesmo", Pergunta3Index);
-    // alert(`${Pergunta3Index} armazenado no session storage`)
-    pergunta3 = sessionStorage.getItem("Pergunta3Mesmo");
+        var fkPergunta3Index = 3;
+        sessionStorage.setItem("fkPergunta3Mesmo", fkPergunta3Index);
+        // fkPergunta3 = sessionStorage.getItem("fkPergunta3Mesmo");
+
+        var Pergunta1Index = document.getElementById("ipt_pergunta1").value;
+        var Pergunta2Index = document.getElementById("slc_respostas").value;
+        var Pergunta3Index = document.getElementById("ipt_pergunta3").value;
+
+        sessionStorage.setItem("Pergunta1Mesmo", Pergunta1Index);
+        sessionStorage.setItem("Pergunta2Mesmo", Pergunta2Index);
+        sessionStorage.setItem("Pergunta3Mesmo", Pergunta3Index);
 
 
+        
+    }else{
+
+        var fkPergunta4Index = 4;
+        sessionStorage.setItem("fkPergunta4Mesmo", fkPergunta4Index);
+
+        var fkPergunta5Index = 5;
+        sessionStorage.setItem("fkPergunta5Mesmo", fkPergunta5Index);
+
+        var fkPergunta6Index = 6;
+        sessionStorage.setItem("fkPergunta6Mesmo", fkPergunta6Index);
+
+
+        var Pergunta4Index = document.getElementById("slc_respostas4").value;
+        var Pergunta5Index = document.getElementById("slc_respostas5").value;
+        var Pergunta6Index = document.getElementById("slc_respostas6").value;
+
+        sessionStorage.setItem("Pergunta1Mesmo", Pergunta4Index);
+        pergunta1 = sessionStorage.getItem("Pergunta1Mesmo");
+
+        sessionStorage.setItem("Pergunta2Mesmo", Pergunta5Index);
+        pergunta2 = sessionStorage.getItem("Pergunta2Mesmo");
+
+        sessionStorage.setItem("Pergunta3Mesmo", Pergunta6Index);
+        pergunta3 = sessionStorage.getItem("Pergunta3Mesmo");
+
+    }
+    
 }
+
+
+
+
+
+
+
+    // alert(`${Pergunta1Index} armazenado no session storage`)
+
+
+
+    // sessionStorage.setItem("Pergunta2Mesmo", Pergunta5Index);
+    // alert(`${Pergunta2Index} armazenado no session storage`)
+
+
+
+    // sessionStorage.setItem("Pergunta3Mesmo", Pergunta6Index);
+    // alert(`${Pergunta3Index} armazenado no session storage`)
+
+
+
 
