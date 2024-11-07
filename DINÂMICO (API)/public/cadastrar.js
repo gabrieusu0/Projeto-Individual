@@ -65,10 +65,16 @@ function cadastrar() {
 
 function guardarIndex() {
     var nomeIndex = document.getElementById("input_nome").value;
-
+    var jafoiIndex = slc_opcao.value;
     console.log(document.getElementById("input_nome"));
     console.log(nomeIndex);
-    var jafoiIndex = slc_opcao.value;
+
+
+    if (nomeIndex  != '' && jafoiIndex != '') {
+        setTimeout(()=> location.href = 'http://localhost:3333/perguntas.html', 1000);
+    }else{
+        alert("Todos os campos devem ser preenchidos")
+    }
 
     sessionStorage.setItem("nomeMesmo", nomeIndex);
     // alert(`${nomeIndex} armazenado no session storage`)
@@ -78,10 +84,7 @@ function guardarIndex() {
     // alert(`${jafoiIndex} armazenado no session storage`)
     jafoi = sessionStorage.getItem("jafoiMesmo");
 
-    // if (jafoi == 'sim') {
-    //     body.sim.display = none;
-    //     body.display = flex;
-    // }
+
 
 }
 
@@ -102,7 +105,6 @@ function guardarPerguntas() {
     sessionStorage.setItem("Pergunta3Mesmo", Pergunta3Index);
     // alert(`${Pergunta3Index} armazenado no session storage`)
     pergunta3 = sessionStorage.getItem("Pergunta3Mesmo");
-
 
 
 }

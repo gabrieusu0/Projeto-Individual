@@ -18,22 +18,36 @@
         <div class="container">
             <p>VOCÊ JÁ FOI AO TEATRO? <br><br> SAIBA ONDE ENCONTRAR E COMO <br> FAZER PARTE DESSE UNIVERSO!</p>
             <p style="font-size: 25px;">CONHEÇA NOSSA SOLUÇÃO!</p> <br>
-            <form class="opcoes">
+            <div class="opcoes">
                 <input class="seunome" type="text" placeholder="SEU NOME" id="input_nome">
+                <div id="div_mensagem"></div>
                 <div class="separador"></div>
                 <select id="slc_opcao">
                     <option value="">JÁ FOI?</option>
                     <option value="sim">SIM</option>
                     <option value="nao">NÃO</option>
                 </select>
-                <button onclick="guardarIndex()"><a href="perguntas.html">SAIBA MAIS</a></button>
+                <button id="btn_cadastrar" onclick="guardarIndex()">SAIBA MAIS</button>
                 <!-- href="./perguntas.html" -->
-            </form>
+            </div>
         </div>
     </div>
     
 </body>
 </html>
 <script src="cadastrar.js">
+
+//     function analisar() {
+//     var nomeIndex = document.getElementById("input_nome").value;
+//     var jafoiIndex = slc_opcao.value;
+
+//     if (nomeIndex != '' || (jafoiIndex == 'sim' || jafoiIndex == 'nao')) {
+//         div_mensagem.innerHTML = `Deu Certo`;
+//     }else{
+//         div_mensagem.innerHTML = `Deu Errado`;
+//     }
+
+    
+// }
 
 </script>
