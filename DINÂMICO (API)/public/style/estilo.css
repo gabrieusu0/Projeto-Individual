@@ -136,7 +136,7 @@ button{
     width: 100%;
     position: relative;
     color: white;
-    background-image: url('/public/img/fundoMesmo.png');
+    background-image: url('../img/fundoMesmo.png');
     background-size: cover;
 }
 
