@@ -4,7 +4,6 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden;
     scroll-behavior: smooth;
 }
 
@@ -54,7 +53,6 @@ body::-webkit-scrollbar {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/inicial.jpg'); /* Cor preta com 50% de opacidade */
     background-size: cover; /* imagem ocupe toda a área*/
   }
-
 
 
 .banner .container {
@@ -128,6 +126,58 @@ button{
     flex-direction: row; /*ISSO QUE DEIXOU A IMAGEM AO LADO*/
     justify-content: space-between;
     align-items: center;
+}
+
+.sobreMim{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    color: white;
+    background-image: url('/public/img/fundoMesmo.png');
+    background-size: cover;
+}
+
+.config{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.imgEU{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imgEU img{
+    border-radius: 50%;
+    /* border: 1px solid white; */
+    height: 450px;
+    width: 450px;
+}
+
+.imgEU p{
+    font-size: 32px;
+    font-family: 'Lora', serif;
+}
+
+.textoEu{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    align-items: center;
+}
+
+.textoEu span{
+    font-size: 32px;
+}
+
+.textoEu p{
+    font-size: 25px;
 }
 
 .cadastro {
