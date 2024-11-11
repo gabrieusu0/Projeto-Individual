@@ -1,0 +1,68 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+.fundo{
+    height: 100vh;
+    display: flex;
+    background-color: #01001B;
+}
+
+.head{
+    height: 100vh;
+    width: 25%;
+    background-color: white;
+}
+
+.parteCima{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 45vh;
+    border: 1px solid black;
+}
+
+.parteCima p {
+    font-size: 50px;
+}
+
+.parteCima span {
+    font-size: 25px;
+}
+
+.parteBaixo{
+    display: flex;
+    margin-top: 30px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 28vh;
+    /* border: 1px solid black; */
+}
+
+button{
+    height: 60px;
+    width: 150px;
+    border-radius: 20px;
+    border: none;
+    background-color: #8461EC;
+    color: white;
+    font-size: 20px;
+}
+
+.sair{
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    align-items: center;
+    height: 22vh;
+    /* border: 1px solid black; */
+}
+
+.sair p{
+    font-size: 25px;
+}
