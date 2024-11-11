@@ -23,7 +23,7 @@ html, body {
     align-items: center;
     justify-content: space-evenly;
     height: 45vh;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 .parteCima p {
@@ -65,4 +65,75 @@ button{
 
 .sair p{
     font-size: 25px;
+}
+
+/* DASHBOARD */
+.dash{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: end;
+    border: 1px solid red;
+}
+
+.mensagem{
+    display: flex;
+    font-size: 35px;
+    color: white;
+    align-items: center;
+    text-align: center;
+    border: 1px solid red;
+}
+
+.conteudo{
+    display: flex;
+    height: 80%;
+    width: 100%;
+}
+
+.grafico{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 50%;
+    border: 1px solid red;
+}
+
+.kpis{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 45%;
+    border: 1px solid rgb(0, 179, 255);
+    color: black;
+}
+
+.kpis p{
+    font-size: 45px;
+    text-align: center;
+}
+
+.kpi1{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    align-items: center;
+    border-radius: 70%;
+    width: 200px;
+    height: 200px;
+}
+
+
+.kpi2{
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    border-radius: 70%;
+    width: 200px;
+    height: 200px;
 }
