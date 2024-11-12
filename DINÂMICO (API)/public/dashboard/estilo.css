@@ -49,7 +49,7 @@ button{
     width: 150px;
     border-radius: 20px;
     border: none;
-    background-color: #8461EC;
+    background-color: rgb(132, 97, 236);
     color: white;
     font-size: 20px;
 }
@@ -70,10 +70,10 @@ button{
 /* DASHBOARD */
 .dash{
     display: flex;
-    width: 100%;
+    width: 80%;
     flex-direction: column;
     justify-content: end;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .mensagem{
@@ -82,7 +82,7 @@ button{
     color: white;
     align-items: center;
     text-align: center;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .conteudo{
@@ -93,12 +93,12 @@ button{
 
 .grafico{
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
     height: 100%;
     width: 50%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .kpis{
@@ -108,7 +108,7 @@ button{
     justify-content: space-evenly;
     height: 100%;
     width: 45%;
-    border: 1px solid rgb(0, 179, 255);
+    /* border: 1px solid rgb(0, 179, 255); */
     color: black;
 }
 
@@ -120,7 +120,7 @@ button{
 .kpi1{
     display: flex;
     justify-content: center;
-    background-color: white;
+    background-color: rgb(57, 124, 51);
     align-items: center;
     border-radius: 70%;
     width: 200px;
@@ -130,10 +130,18 @@ button{
 
 .kpi2{
     display: flex;
-    background-color: white;
+    background-color: rgb(147, 54, 54);
     justify-content: center;
     align-items: center;
     border-radius: 70%;
     width: 200px;
     height: 200px;
+}
+
+.linha{
+    display: flex;
+    border: 1px solid rgb(132, 97, 236);
+    background-color: rgba(2, 7, 50, 0.338);
+    height: 50%;
+    width: 80%;
 }

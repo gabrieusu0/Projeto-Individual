@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chamando a biblioteca -->
 
 </head>
+
 <body>
     <div class="fundo">
         <div class="head">
@@ -16,69 +18,176 @@
                 <span> POR QUE?</span>
             </div>
             <div class="parteBaixo">
-                <button id="ipt_n_foram">NÃO FORAM</button>
-                <button id="ipt_foram">FORAM</button>
+                <button onclick="nao_foram()" id="ipt_n_foram">NÃO FORAM</button>
+                <button onclick="foram()" id="ipt_foram">FORAM</button>
             </div>
             <div class="sair">
                 <p>SAIR</p>
             </div>
         </div>
-        <div class="dash">
+        <div id="inicial" class="dash" style="display: flex;">
             <div class="mensagem">
                 <span>SEGUNDO NOSSO INDICADORES, APENAS X PESSOAS A CADA 10 JÁ ASSISTIRAM A UMA PEÇA DE TEATRO</span>
             </div>
             <div class="conteudo">
-            <div class="grafico">
-                <div>
-                    <canvas id="myChart" style="position: relative; background-color: white;"></canvas> <!-- Adicionando quadro para pintar o gráfico -->
+                <div class="grafico">
+                    <div class="linha">
+                        <canvas id="myChart"></canvas> <!-- Adicionando quadro para pintar o gráfico -->
+                    </div>
                 </div>
-            </div>
-            <div class="kpis">
-                <div class="kpi1">
-                    <p>1 - SP</p>
+                <div class="kpis">
+                    <div class="kpi1">
+                        <p>1 - SP</p>
+                    </div>
+                    <div class="kpi2">
+                        <p>9 - TO</p>
+                    </div>
                 </div>
-                <div class="kpi2">
-                    <p>9 - TO</p>
-                </div>
-            </div>
             </div>
         </div>
+
+        <div id="div_ja_foi" style="display: none;" class="dash">
+            <div class="mensagem">
+                <span>JÁ FOI</span>
+            </div>
+            <div class="conteudo">
+                <div class="grafico">
+                    <div class="linha">
+                        <canvas id="myChart"></canvas> <!-- Adicionando quadro para pintar o gráfico -->
+                    </div>
+                </div>
+                <div class="kpis">
+                    <div class="kpi1">
+                        <p>1 - SP</p>
+                    </div>
+                    <div class="kpi2">
+                        <p>9 - TO</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="div_nao_foi" style="display: none;" class="dash">
+            <div class="mensagem">
+                <span>NÃO FOI</span>
+            </div>
+            <div class="conteudo">
+                <div class="grafico">
+                    <div class="linha">
+                        <canvas id="myChart"></canvas> <!-- Adicionando quadro para pintar o gráfico -->
+                    </div>
+                </div>
+                <div class="kpis">
+                    <div class="kpi1">
+                        <p>1 - SP</p>
+                    </div>
+                    <div class="kpi2">
+                        <p>9 - TO</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </body>
+
 </html>
+
+
 <script>
+    function foram() {
+
+        var dash = document.getElementById('div_ja_foi'); // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
+        var dash1 = document.getElementById('inicial'); // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
+        var dash2 = document.getElementById('div_nao_foi'); // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
+
+            dash.style.display = 'flex'; // tornando a div visível 
+            dash2.style.display = 'none';
+            inicial.style.display = 'none';
+
+
+    }
+
+    function nao_foram() {
+
+        var dash = document.getElementById('div_ja_foi'); // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
+        var dash1 = document.getElementById('inicial'); // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
+        var dash2 = document.getElementById('div_nao_foi'); // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
+
+            dash2.style.display = 'flex'; // tornando a div visível 
+            dash.style.display = 'none';
+            inicial.style.display = 'none';
+
+    }
+
+
+
     const labels = [
-        '12:00',
-        '13:00',
-        '14:00',
-        '15:00',
-        '16:00',
-        '17:00',
+        '0 até 7',
+        '7 até 14',
+        '14 até 21',
+        '21 até 28',
+        '28 até 35',
+        'Mais',
     ];
 
     const data = {
         labels: labels,
         datasets: [{
-            label: 'Temperatura',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [30, 29, 28, 25, 22, 23],
-
-
-        },
-        {
-            label: 'Umidade',
-            backgroundColor: 'rgb(0, 0, 255)',
-            borderColor: 'rgb(0, 0, 255)',
-            data: [80, 82, 80, 85, 80, 83],
+            label: 'Foram ao Teatro',
+            backgroundColor: 'rgb(132, 97, 236)',
+            borderColor: 'rgb(132, 97, 236)',
+            data: [28, 30, 36, 33, 23, 40],
         }
-    ]
+        ]
     };
+
 
     const config = {
         type: 'line',
         data: data,
-        options: {}
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Primeira vez ao Teatro por Faixa Etária',
+                    color: 'white',  // Cor do título
+                    font: {
+                        size: 18,
+                        // weight: 'bold',
+                    },
+                    padding: { top: 20, bottom: 20 }
+                },
+                legend: {
+                    labels: {
+                        color: 'white',  // Cor do texto da legenda
+                        font: {
+                            size: 14
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        color: 'white',  // Cor dos números no eixo X
+                    },
+                    grid: {
+                        color: 'white', // Cor das linhas de grade no eixo X
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: 'white',  // Cor dos números no eixo Y
+                    },
+                    grid: {
+                        color: 'white', // Cor das linhas de grade no eixo Y
+                    }
+                }
+            }
+        }
     };
 
     const myChart = new Chart(
