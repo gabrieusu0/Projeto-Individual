@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+</head>
+<body>
+    <div>
+        <button onclick="estado()">Estado mais frequente</button>
+        <div id="div_mensagem"></div>
+    </div>
+</body>
+</html>
+
+<script>
+    function estado(){
+
+
+        fetch("/usuarios/estado", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    setTimeout(function () {
+                        div_mensagem.innerHTML = `O estado é ${resposta}`;
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+</script>
