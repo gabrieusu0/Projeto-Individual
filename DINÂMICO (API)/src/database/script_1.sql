@@ -1,5 +1,4 @@
 CREATE DATABASE elbi;
-
 USE elbi;
 
 CREATE TABLE cadastro (
@@ -12,7 +11,13 @@ CREATE TABLE cadastro (
     oque_procura VARCHAR(45),
     CHECK (ja_foi IN ('sim', 'nao')),
     CHECK (oque_procura IN ('conhecer', 'participar'))
-);
+);SELECT COUNT(idCadastro) FROM cadastro;
+
+ALTER TABLE cadastro 
+MODIFY COLUMN usuario VARCHAR(45) UNIQUE;
+
+ALTER TABLE cadastro 
+MODIFY COLUMN email VARCHAR(45) UNIQUE;
 
 CREATE TABLE pergunta (
     idPergunta INT AUTO_INCREMENT PRIMARY KEY,
@@ -29,54 +34,16 @@ CREATE TABLE respostas (
     resposta VARCHAR(300),
     CONSTRAINT chkCliente FOREIGN KEY (fkPergunta)REFERENCES pergunta(idPergunta),
 	CONSTRAINT chkPessoa FOREIGN KEY (fkCadastro)REFERENCES cadastro(idCadastro)
-);
-
-SELECT * FROM respostas;
-
-SELECT 
-	cadastro.nome as 'Nome',
-    cadastro.ja_foi as 'Já foi ao teatro?',
-	p.pergunta as 'Pergunta',
-    r.resposta as 'Resposta'
-		FROM pergunta as p
-        JOIN respostas as r
-			ON p.idPergunta = r.fkPergunta
-		JOIN cadastro
-			ON cadastro.idCadastro = r.fkCadastro;
-
--- Inserindo usuários
-INSERT INTO cadastro (ja_foi, nome, usuario, email, senha, oque_procura) VALUES
-    ('sim', 'Ana Silva', 'ana.s', 'ana@example.com', '123456', 'participar'),
-    ('nao', 'Bruno Costa', 'bruno.c', 'bruno@example.com', 'abcdef', 'conhecer'),
-    ('sim', 'Carla Dias', 'carla.d', 'carla@example.com', 'senha789', 'conhecer'),
-    ('nao', 'Diego Santos', 'diego.s', 'diego@example.com', 'senha123', 'participar');
-    
-SELECT * FROM cadastro;
+); 
 
 -- Inserindo perguntas com base em 'ja_foi' ao teatro
 INSERT INTO pergunta (pergunta, isTeatro) VALUES
     ('QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?', 'sim'),
     ('QUAL SEU GÊNERO FAVORITO?', 'sim'),
     ('QUANTAS VEZES FOI?', 'sim'),
+    ('QUAL SEU ESTADO?', 'nao'),
     ('QUAL TIPO DE EVENTO CULTURAL MAIS DE INTERESSA?', 'nao'),
-    ('QUAL MOTIVO PARA VOCÊ NUNCA TER IDO?', 'nao'),
-    ('QUAL SEU ESTADO?', 'nao');
-
--- Inserindo respostas para os usuários
-INSERT INTO respostas (fkPergunta, fkCadastro, resposta) VALUES
-    (1, 1, 'A peça "Hamlet" foi incrível!'),
-    (2, 1, 'Assisti umas 5 peças'),
-    (3, 1, 'Prefiro dramas e comédias'),
-    (4, 2, 'Conhecer o teatro pela sua riqueza cultural'),
-    (5, 2, 'Sim, assisti algumas peças online'),
-    (6, 2, 'Gosto muito de shows e exposições de arte'),
-    (1, 3, 'A peça "O Auto da Compadecida" foi memorável'),
-    (2, 3, 'Acho que umas 10 vezes'),
-    (3, 3, 'Gosto de peças clássicas'),
-    (4, 4, 'Tenho interesse em participar de peças teatrais'),
-    (6, 4, 'Aprecio exposições culturais e concertos de música clássica');
-
-SELECT * FROM respostas;
+    ('QUAL MOTIVO PARA VOCÊ NUNCA TER IDO?', 'nao');
     
 SELECT
     cadastro.nome AS 'Nome Cliente',
@@ -89,9 +56,110 @@ JOIN pergunta ON respostas.fkPergunta = pergunta.idPergunta
 WHERE cadastro.ja_foi = 'nao';
 
 SELECT * FROM cadastro;
-TRUNCATE cadastro;
 
 SELECT nome, email FROM cadastro WHERE email = 'ana@example.com' AND senha = '123456';
 
+-- EXEMPLO DE JOIN
+SELECT 
+	cadastro.nome as 'Nome',
+    cadastro.ja_foi as 'Já foi ao teatro?',
+	p.pergunta as 'Pergunta',
+    r.resposta as 'Resposta'
+		FROM pergunta as p
+        JOIN respostas as r
+			ON p.idPergunta = r.fkPergunta
+		LEFT JOIN cadastro
+			ON cadastro.idCadastro = r.fkCadastro;
+	
+SELECT * FROM pergunta join respostas on pergunta.idPergunta = respostas.fkPergunta;
+
+SELECT COUNT(resposta) AS Resposta, nome 
+FROM cadastro JOIN respostas
+ON cadastro.idCadastro = respostas.fkCadastro
+JOIN pergunta
+ON pergunta.idPergunta = respostas.fkPergunta
+GROUP BY pergunta;
+
+SELECT * FROM respostas;
+
+SELECT COUNT(DISTINCT(resposta)) as 'Respostas Distintas' FROM respostas;
 
 
+-- KPI 1 - Gênero favorito 
+SELECT 
+	respostas.resposta as Resposta,
+	COUNT(resposta) as 'Respostas' FROM respostas
+    JOIN pergunta as p
+    ON p.idPergunta = respostas.fkPergunta
+    WHERE pergunta = 'QUAL SEU GÊNERO FAVORITO?'
+	GROUP BY resposta
+	ORDER BY respostas desc;
+    
+-- KPI 2 - MOTIVO DE QUEM NÃO VAI 
+SELECT 
+	respostas.resposta as Resposta,
+	COUNT(resposta) as 'Respostas' FROM respostas
+    JOIN pergunta as p
+    ON p.idPergunta = respostas.fkPergunta
+    WHERE pergunta = 'QUAL MOTIVO PARA VOCÊ NUNCA TER IDO?'
+	GROUP BY resposta
+	ORDER BY respostas desc;
+    
+-- KPI 2 - QUAL TIPO DE EVENTO CULTURAL MAIS DE INTERESSA
+SELECT 
+	respostas.resposta as Resposta,
+	COUNT(resposta) as 'Respostas' FROM respostas
+    JOIN pergunta as p
+    ON p.idPergunta = respostas.fkPergunta
+    WHERE pergunta = 'QUAL TIPO DE EVENTO CULTURAL MAIS DE INTERESSA?'
+	GROUP BY resposta
+	ORDER BY respostas desc;
+    
+    
+-- KPI 3 - QUANTOS JÁ FORAM OU NÃO AO TEATRO 
+SELECT 
+	cadastro.ja_foi as 'Já foi?',
+	COUNT(ja_foi) as 'Contador' FROM cadastro
+	GROUP BY ja_foi;
+
+
+-- pessoas totais = 111
+-- foram: 32
+-- n foram: 79
+
+SELECT 
+	(COUNT(ja_foi)) as 'Contador' FROM cadastro;
+    
+-- KPI 4 - Estado que mais frequenta
+SELECT 
+	respostas.resposta as Resposta,
+	COUNT(resposta) as 'Respostas' FROM respostas
+    JOIN pergunta as p
+    ON p.idPergunta = respostas.fkPergunta
+    WHERE pergunta = 'QUAL SEU ESTADO?'
+	GROUP BY resposta
+	ORDER BY respostas desc;
+    
+-- ESTADO QUE MAIS FREQUENTA
+    
+SELECT 
+	respostas.resposta as Resposta,
+	COUNT(resposta) as 'Respostas' FROM respostas
+    JOIN pergunta as p
+    ON p.idPergunta = respostas.fkPergunta
+    WHERE pergunta = 'QUAL SEU ESTADO?'
+	GROUP BY resposta
+	ORDER BY respostas desc
+    LIMIT 1;
+    
+-- ESTADO QUE MENOS FREQUENTA
+    
+SELECT 
+	respostas.resposta as Resposta,
+	COUNT(resposta) as 'Respostas' FROM respostas
+    JOIN pergunta as p
+    ON p.idPergunta = respostas.fkPergunta
+    WHERE pergunta = 'QUAL SEU ESTADO?'
+	GROUP BY resposta
+	ORDER BY respostas
+    LIMIT 1;

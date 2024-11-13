@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teste</title>
 </head>
-<body>
+
+<body onload="estado(), estadoMenor()">
     <div>
-        <button onclick="estado()">Estado mais frequente</button>
+        <!-- <button onclick="estado()">Estado mais frequente</button> -->
         <div id="div_mensagem"></div>
+        <!-- <button onclick="estadoMenor()">Estado menos frequente</button> -->
+        <div id="div_mensagem1"></div>
     </div>
 </body>
+
 </html>
 
 <script>
-    function estado(){
+
+// setInterval(estado(), 5000) - Atualizar
+
+    function estado() {
 
 
-        fetch("/usuarios/estado", {
-            method: "POST",
+        fetch("/respostas/estadoMaior", {
+            method: "GET",
             headers: {
                 "Content-Type": "application/json"
             }
@@ -33,7 +41,39 @@
                     console.log(JSON.stringify(json));
 
                     setTimeout(function () {
-                        div_mensagem.innerHTML = `O estado é ${resposta}`;
+                        document.getElementById("div_mensagem").innerHTML = `O estado é ${json[0].Resposta}`;
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function estadoMenor() {
+
+
+        fetch("/respostas/estadoMenor", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    setTimeout(function () {
+                        document.getElementById("div_mensagem1").innerHTML = `O estado é ${json[0].Resposta}`;
                     }, 1000); // apenas para exibir o loading
 
                 });
