@@ -16,6 +16,8 @@ function buscarEstadoMaior(req, res) {
     );
 }
 
+
+
 function buscarEstadoMenor(req, res) {
 
     respostasModel.buscarEstadoMenor()
@@ -32,7 +34,43 @@ function buscarEstadoMenor(req, res) {
     );
 }
 
+
+
+function buscarGeneroMaior(req, res) {
+
+    respostasModel.buscarGeneroMaior()
+    .then(
+        function (resultado) {
+            res.status(200).json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+function buscarGeneroMenor(req, res) {
+
+    respostasModel.buscarGeneroMenor()
+    .then(
+        function (resultado) {
+            res.status(200).json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
 module.exports = {
     buscarEstadoMaior,
-    buscarEstadoMenor
+    buscarEstadoMenor,
+    buscarGeneroMaior,
+    buscarGeneroMenor
 }

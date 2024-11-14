@@ -10,7 +10,7 @@
 
 </head>
 
-<body onload="estado(), estadoMenor()">
+<body onload="estado(), estadoMenor(), generoMaior(), generoMenor()">
     <div class="fundo">
         <div class="head">
             <div class="parteCima">
@@ -58,10 +58,10 @@
                 </div>
                 <div class="kpis">
                     <div class="kpi1">
-                        <p style="font-size: 26px;">1 - ROMANCE</p>
+                        <p style="font-size: 26px;" id="div_genero"></p>
                     </div>
                     <div class="kpi2">
-                        <p style="font-size: 26px;">9 - COMÉDIA</p>
+                        <p style="font-size: 26px;" id="div_genero_nao"></p>
                     </div>
                 </div>
             </div>
@@ -233,6 +233,81 @@
 
         return false;
     }
+
+
+
+    function generoMaior() {
+
+
+        fetch("/respostas/generoMaior", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    setTimeout(function () {
+                        document.getElementById("div_genero").innerHTML = `${json[0].Resposta}`;
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
+
+    function generoMenor() {
+
+
+        fetch("/respostas/generoMenor", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    setTimeout(function () {
+                        document.getElementById("div_genero_nao").innerHTML = `${json[0].Resposta}`;
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
+
+
+
+
+
 
     function foram() {
 

@@ -13,4 +13,13 @@ router.get("/estadoMenor", function (req, res) {
     respostasController.buscarEstadoMenor(req, res);
 });
 
+router.get("/generoMaior", function (req, res) {
+    respostasController.buscarGeneroMaior(req, res);
+});
+
+router.get("/generoMenor", function (req, res) {
+    respostasController.buscarGeneroMenor(req, res);
+});
+
+
 module.exports = router;
