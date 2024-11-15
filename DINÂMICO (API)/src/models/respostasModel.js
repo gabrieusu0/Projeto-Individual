@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 function buscarEstadoMaior() {
 
-    var instrucaoSql = `
+  var instrucaoSql = `
     SELECT 
 	respostas.resposta as Resposta,
 	COUNT(resposta) as 'Respostas' FROM respostas
@@ -13,14 +13,14 @@ function buscarEstadoMaior() {
 	ORDER BY respostas desc
     LIMIT 1;
     `;
-  
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-  }
 
-  function buscarEstadoMenor() {
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
 
-    var instrucaoSql = `
+function buscarEstadoMenor() {
+
+  var instrucaoSql = `
     SELECT 
 	respostas.resposta as Resposta,
 	COUNT(resposta) as 'Respostas' FROM respostas
@@ -31,14 +31,14 @@ function buscarEstadoMaior() {
 	ORDER BY respostas
     LIMIT 1;
     `;
-  
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-  }
 
-  function buscarGeneroMaior() {
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
 
-    var instrucaoSql = `
+function buscarGeneroMaior() {
+
+  var instrucaoSql = `
 SELECT 
 	respostas.resposta as Resposta,
 	COUNT(resposta) as 'Respostas' FROM respostas
@@ -49,14 +49,14 @@ SELECT
 	ORDER BY respostas desc
     LIMIT 1;
     `;
-  
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-  }
 
-  function buscarGeneroMenor() {
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
 
-    var instrucaoSql = `
+function buscarGeneroMenor() {
+
+  var instrucaoSql = `
 SELECT 
 	respostas.resposta as Resposta,
 	COUNT(resposta) as 'Respostas' FROM respostas
@@ -67,16 +67,113 @@ SELECT
 	ORDER BY respostas 
     LIMIT 1;
     `;
-  
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-  }
 
-  
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
 
-  module.exports = {
-    buscarEstadoMaior,
-    buscarEstadoMenor,
-    buscarGeneroMenor,
-    buscarGeneroMaior
-  }
+
+function buscar_de_0_a_7() {
+
+  var instrucaoSql = `
+SELECT 
+    COUNT(respostas.resposta) AS 'Respostas'
+FROM respostas
+JOIN pergunta AS p ON p.idPergunta = respostas.fkPergunta
+WHERE p.pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' 
+  AND respostas.resposta <= 7;
+    `;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function buscar_de_7_a_14() {
+
+  var instrucaoSql = `
+    SELECT 
+    COUNT(respostas.resposta) AS 'Respostas'
+FROM respostas
+JOIN pergunta AS p ON p.idPergunta = respostas.fkPergunta
+WHERE p.pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' 
+	AND respostas.resposta > 7 and respostas.resposta <= 14;
+    `;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function buscar_de_14_a_21() {
+
+  var instrucaoSql = `
+SELECT 
+    COUNT(respostas.resposta) AS 'Respostas'
+FROM respostas
+JOIN pergunta AS p ON p.idPergunta = respostas.fkPergunta
+WHERE p.pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' 
+	AND respostas.resposta > 14 and respostas.resposta <= 21;
+    `;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function buscar_de_21_a_28() {
+
+  var instrucaoSql = `
+SELECT 
+    COUNT(respostas.resposta) AS 'Respostas'
+FROM respostas
+JOIN pergunta AS p ON p.idPergunta = respostas.fkPergunta
+WHERE p.pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' 
+	AND respostas.resposta > 21 and respostas.resposta <= 28;
+    `;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function buscar_de_28_a_35() {
+
+  var instrucaoSql = `
+SELECT 
+    COUNT(respostas.resposta) AS 'Respostas'
+FROM respostas
+JOIN pergunta AS p ON p.idPergunta = respostas.fkPergunta
+WHERE p.pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' 
+	AND respostas.resposta > 28 and respostas.resposta <= 35;
+    `;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function buscar_mais_de_35() {
+
+  var instrucaoSql = `
+SELECT 
+    COUNT(respostas.resposta) AS 'Respostas'
+FROM respostas
+JOIN pergunta AS p ON p.idPergunta = respostas.fkPergunta
+WHERE p.pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' 
+  AND respostas.resposta > 35;
+    `;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+
+
+module.exports = {
+  buscarEstadoMaior,
+  buscarEstadoMenor,
+  buscarGeneroMenor,
+  buscarGeneroMaior,
+  buscar_de_0_a_7,
+  buscar_de_7_a_14,
+  buscar_de_14_a_21,
+  buscar_de_21_a_28,
+  buscar_de_28_a_35,
+  buscar_mais_de_35
+}

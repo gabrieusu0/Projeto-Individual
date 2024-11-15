@@ -10,7 +10,7 @@
 
 </head>
 
-<body onload="estado(), estadoMenor(), generoMaior(), generoMenor()">
+<body onload="estado(), estadoMenor(), generoMaior(), generoMenor(), primeira_vez()">
     <div class="fundo">
         <div class="head">
             <div class="parteCima">
@@ -20,22 +20,26 @@
             <div class="parteBaixo">
                 <button onclick="nao_foram()" id="ipt_n_foram">NÃO FORAM</button>
                 <button onclick="foram()" id="ipt_foram">FORAM</button>
+                <button onclick="inicial()" id="ipt_foram">INICIAL</button>
             </div>
             <div class="sair">
                 <p>SAIR</p>
             </div>
         </div>
-        <div id="inicial" class="dash" style="display: flex;">
+        <div id="inicial" class="dash" style="display: none;">
             <div class="mensagem">
                 <span>SEGUNDO NOSSO INDICADORES, APENAS 3 PESSOAS A CADA 10 JÁ ASSISTIRAM A UMA PEÇA DE TEATRO</span>
             </div>
             <div class="conteudo">
                 <div class="grafico">
-                    <div class="linha">
-                        <canvas id="myChart"></canvas> <!-- Adicionando quadro para pintar o gráfico -->
+                    <div id="graficomesmo" class="linha">
+                        <!-- <canvas id="inicialne"></canvas> Adicionando quadro para pintar o gráfico -->
                     </div>
                 </div>
                 <div class="kpis">
+                    <div style="height: 100px;">
+                        <p style="color: white;"> ESTADOS: </p>
+                    </div>
                     <div class="kpi1">
                         <p id="div_maior"></p>
                     </div>
@@ -53,10 +57,13 @@
             <div class="conteudo">
                 <div class="grafico">
                     <div class="linha">
-                        <canvas id="ja"></canvas> <!-- Adicionando quadro para pintar o gráfico -->
+                        <!-- <canvas id="ja"></canvas> Adicionando quadro para pintar o gráfico -->
                     </div>
                 </div>
                 <div class="kpis">
+                    <div style="height: 100px;">
+                        <p style="color: white;"> GÊNEROS: </p>
+                    </div>
                     <div class="kpi1">
                         <p style="font-size: 26px;" id="div_genero"></p>
                     </div>
@@ -74,7 +81,7 @@
             <div class="conteudo">
                 <div class="grafico">
                     <div class="linha">
-                        <canvas id="ja_nao"></canvas> <!-- Adicionando quadro para pintar o gráfico -->
+                        <!-- <canvas id="ja_nao"></canvas> Adicionando quadro para pintar o gráfico -->
                     </div>
                 </div>
                 <div class="kpis">
@@ -96,79 +103,297 @@
 
 
 <script>
-    const labels = [
-        '0 até 7',
-        '7 até 14',
-        '14 até 21',
-        '21 até 28',
-        '28 até 35',
-        'Mais',
-    ];
 
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'Foram ao Teatro',
-            backgroundColor: 'rgb(132, 97, 236)',
-            borderColor: 'rgb(132, 97, 236)',
-            data: [28, 30, 36, 33, 23, 40],
-        }
-        ]
-    };
+    var de_0_a_7;
+    var de_7_a_14;
+    var de_14_a_21;
+    var de_21_a_28;
+    var de_28_a_35;
+    var mais_de_35;
 
-    const config = {
-        type: 'line',
-        data: data,
-        options: {
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Primeira vez ao Teatro por Faixa Etária',
-                    color: 'white',  // Cor do título
-                    font: {
-                        size: 18,
-                        // weight: 'bold',
-                    },
-                    padding: { top: 20, bottom: 20 }
-                },
-                legend: {
-                    labels: {
-                        color: 'white',  // Cor do texto da legenda
+
+
+    function primeira_vez() {
+
+        fetch("/respostas/de_0_a_7", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    setTimeout(function () {
+                        de_0_a_7 = json[0].Respostas;
+                        console.log("de_0_a_7 ", de_0_a_7);
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+
+
+
+
+        fetch("/respostas/de_7_a_14", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    setTimeout(function () {
+                        de_7_a_14 = json[0].Respostas;
+                        console.log("de_7_a_14 ", de_7_a_14);
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+
+
+
+
+        fetch("/respostas/de_14_a_21", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    setTimeout(function () {
+                        de_14_a_21 = json[0].Respostas;
+                        console.log("de_14_a_21 ", de_14_a_21);
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+
+
+
+
+        fetch("/respostas/de_21_a_28", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    setTimeout(function () {
+                        de_21_a_28 = json[0].Respostas;
+                        console.log("de_21_a_28 ", de_21_a_28);
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+
+
+
+
+        fetch("/respostas/de_28_a_35", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    setTimeout(function () {
+                        de_28_a_35 = json[0].Respostas;
+                        console.log("de_28_a_35 ", de_28_a_35);
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+
+
+
+
+        fetch("/respostas/mais_de_35", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    setTimeout(function () {
+                        mais_de_35 = json[0].Respostas;
+                        console.log("mais_de_35 ", mais_de_35);
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+
+
+    }
+
+
+
+
+
+
+    function inicial() {
+
+        var dash = document.getElementById('div_ja_foi'); // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
+        var dash1 = document.getElementById('inicial'); // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
+        var dash2 = document.getElementById('div_nao_foi'); // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
+
+        dash.style.display = 'none'; // tornando a div visível 
+        dash2.style.display = 'none';
+        dash1.style.display = 'flex';
+        
+
+        graficomesmo.innerHTML = `<canvas id="inicialne"> </canvas>`
+
+
+        const labels = [
+            '0 até 7',
+            '7 até 14',
+            '14 até 21',
+            '21 até 28',
+            '28 até 35',
+            'Mais',
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Foram ao Teatro',
+                backgroundColor: 'rgb(132, 97, 236)',
+                borderColor: 'rgb(132, 97, 236)',
+                data: [de_0_a_7, de_7_a_14, de_14_a_21, de_21_a_28, de_28_a_35, mais_de_35],
+            }
+            ]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Primeira vez ao Teatro por Faixa Etária',
+                        color: 'white',  // Cor do título
                         font: {
-                            size: 14
+                            size: 18,
+                            // weight: 'bold',
+                        },
+                        padding: { top: 20, bottom: 20 }
+                    },
+                    legend: {
+                        labels: {
+                            color: 'white',  // Cor do texto da legenda
+                            font: {
+                                size: 14
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: 'white',  // Cor dos números no eixo X
+                        },
+                        grid: {
+                            color: 'white', // Cor das linhas de grade no eixo X
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: 'white',  // Cor dos números no eixo Y
+                        },
+                        grid: {
+                            color: 'white', // Cor das linhas de grade no eixo Y
                         }
                     }
                 }
-            },
-            scales: {
-                x: {
-                    ticks: {
-                        color: 'white',  // Cor dos números no eixo X
-                    },
-                    grid: {
-                        color: 'white', // Cor das linhas de grade no eixo X
-                    }
-                },
-                y: {
-                    ticks: {
-                        color: 'white',  // Cor dos números no eixo Y
-                    },
-                    grid: {
-                        color: 'white', // Cor das linhas de grade no eixo Y
-                    }
-                }
             }
-        }
-    };
+        };
 
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
+        const myChart = new Chart(
+            document.getElementById('inicialne'),
+            config
+        );
 
-    var maior = '';
-    var menor = '';
+    }
+
+
 
     function estado() {
 
@@ -258,6 +483,7 @@
                         document.getElementById("div_genero").innerHTML = `${json[0].Resposta}`;
                     }, 1000); // apenas para exibir o loading
 
+                    // console.log(json[0].Respostas);
                 });
 
             }
@@ -303,12 +529,6 @@
     }
 
 
-
-
-
-
-
-
     function foram() {
 
         var dash = document.getElementById('div_ja_foi'); // dessa forma referenciamos uma classe chamada 'dash', o [0] garante que seja o primeiro elemento com esse nome (indice 0)
@@ -317,76 +537,76 @@
 
         dash.style.display = 'flex'; // tornando a div visível 
         dash2.style.display = 'none';
-        inicial.style.display = 'none';
+        dash1.style.display = 'none';
 
-        const labels = [
-            'Romance',
-            'Trágedia',
-            'Stand-up',
-            'Fantoche',
-            'Drama',
-            'Musical',
-        ];
+        // const labels = [
+        //     'Romance',
+        //     'Trágedia',
+        //     'Stand-up',
+        //     'Fantoche',
+        //     'Drama',
+        //     'Musical',
+        // ];
 
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'Gênero preferido',
-                backgroundColor: 'rgb(132, 97, 236)',
-                borderColor: 'rgb(132, 97, 236)',
-                data: [28, 30, 36, 33, 23, 40],
-            }
-            ]
-        };
+        // const data = {
+        //     labels: labels,
+        //     datasets: [{
+        //         label: 'Gênero preferido',
+        //         backgroundColor: 'rgb(132, 97, 236)',
+        //         borderColor: 'rgb(132, 97, 236)',
+        //         data: [28, 30, 36, 33, 23, 40],
+        //     }
+        //     ]
+        // };
 
-        const config2 = {
-            type: 'line',
-            data: data,
-            options: {
-                responsive: true,
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Teste do já foi',
-                        color: 'white',  // Cor do título
-                        font: {
-                            size: 18,
-                            // weight: 'bold',
-                        },
-                        padding: { top: 20, bottom: 20 }
-                    },
-                    legend: {
-                        labels: {
-                            color: 'white',  // Cor do texto da legenda
-                            font: {
-                                size: 14
-                            }
-                        }
-                    }
-                },
-                scales: {
-                    x: {
-                        ticks: {
-                            color: 'white',  // Cor dos números no eixo X
-                        },
-                        grid: {
-                            color: 'white', // Cor das linhas de grade no eixo X
-                        }
-                    },
-                    y: {
-                        ticks: {
-                            color: 'white',  // Cor dos números no eixo Y
-                        },
-                        grid: {
-                            color: 'white', // Cor das linhas de grade no eixo Y
-                        }
-                    }
-                }
-            }
-        };
+        // const config2 = {
+        //     type: 'line',
+        //     data: data,
+        //     options: {
+        //         responsive: true,
+        //         plugins: {
+        //             title: {
+        //                 display: true,
+        //                 text: 'Teste do já foi',
+        //                 color: 'white',  // Cor do título
+        //                 font: {
+        //                     size: 18,
+        //                     // weight: 'bold',
+        //                 },
+        //                 padding: { top: 20, bottom: 20 }
+        //             },
+        //             legend: {
+        //                 labels: {
+        //                     color: 'white',  // Cor do texto da legenda
+        //                     font: {
+        //                         size: 14
+        //                     }
+        //                 }
+        //             }
+        //         },
+        //         scales: {
+        //             x: {
+        //                 ticks: {
+        //                     color: 'white',  // Cor dos números no eixo X
+        //                 },
+        //                 grid: {
+        //                     color: 'white', // Cor das linhas de grade no eixo X
+        //                 }
+        //             },
+        //             y: {
+        //                 ticks: {
+        //                     color: 'white',  // Cor dos números no eixo Y
+        //                 },
+        //                 grid: {
+        //                     color: 'white', // Cor das linhas de grade no eixo Y
+        //                 }
+        //             }
+        //         }
+        //     }
+        // };
 
 
-        buildChart("ja", config2);
+        // buildChart("ja", config2);
 
 
     }
@@ -399,85 +619,85 @@
 
         dash2.style.display = 'flex'; // tornando a div visível 
         dash.style.display = 'none';
-        inicial.style.display = 'none';
+        dash1.style.display = 'none';
 
-        const labels = [
-            '0 até 7',
-            '7 até 14',
-            '14 até 21',
-            '21 até 28',
-            '28 até 35',
-            'Mais',
-        ];
+        // const labels = [
+        //     '0 até 7',
+        //     '7 até 14',
+        //     '14 até 21',
+        //     '21 até 28',
+        //     '28 até 35',
+        //     'Mais',
+        // ];
 
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'Foram ao Teatro',
-                backgroundColor: 'rgb(132, 97, 236)',
-                borderColor: 'rgb(132, 97, 236)',
-                data: [28, 30, 36, 33, 23, 40],
-            }
-            ]
-        };
+        // const data = {
+        //     labels: labels,
+        //     datasets: [{
+        //         label: 'Foram ao Teatro',
+        //         backgroundColor: 'rgb(132, 97, 236)',
+        //         borderColor: 'rgb(132, 97, 236)',
+        //         data: [28, 30, 36, 33, 23, 40],
+        //     }
+        //     ]
+        // };
 
-        const config3 = {
-            type: 'line',
-            data: data,
-            options: {
-                responsive: true,
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Teste não foram',
-                        color: 'white',  // Cor do título
-                        font: {
-                            size: 18,
-                            // weight: 'bold',
-                        },
-                        padding: { top: 20, bottom: 20 }
-                    },
-                    legend: {
-                        labels: {
-                            color: 'white',  // Cor do texto da legenda
-                            font: {
-                                size: 14
-                            }
-                        }
-                    }
-                },
-                scales: {
-                    x: {
-                        ticks: {
-                            color: 'white',  // Cor dos números no eixo X
-                        },
-                        grid: {
-                            color: 'white', // Cor das linhas de grade no eixo X
-                        }
-                    },
-                    y: {
-                        ticks: {
-                            color: 'white',  // Cor dos números no eixo Y
-                        },
-                        grid: {
-                            color: 'white', // Cor das linhas de grade no eixo Y
-                        }
-                    }
-                }
-            }
-        };
+        // const config3 = {
+        //     type: 'line',
+        //     data: data,
+        //     options: {
+        //         responsive: true,
+        //         plugins: {
+        //             title: {
+        //                 display: true,
+        //                 text: 'Teste não foram',
+        //                 color: 'white',  // Cor do título
+        //                 font: {
+        //                     size: 18,
+        //                     // weight: 'bold',
+        //                 },
+        //                 padding: { top: 20, bottom: 20 }
+        //             },
+        //             legend: {
+        //                 labels: {
+        //                     color: 'white',  // Cor do texto da legenda
+        //                     font: {
+        //                         size: 14
+        //                     }
+        //                 }
+        //             }
+        //         },
+        //         scales: {
+        //             x: {
+        //                 ticks: {
+        //                     color: 'white',  // Cor dos números no eixo X
+        //                 },
+        //                 grid: {
+        //                     color: 'white', // Cor das linhas de grade no eixo X
+        //                 }
+        //             },
+        //             y: {
+        //                 ticks: {
+        //                     color: 'white',  // Cor dos números no eixo Y
+        //                 },
+        //                 grid: {
+        //                     color: 'white', // Cor das linhas de grade no eixo Y
+        //                 }
+        //             }
+        //         }
+        //     }
+        // };
 
-        buildChart("ja_nao", config3);
+        // buildChart("ja_nao", config3);
     }
 
-    function buildChart(id, config) {
-        const myChart = new Chart(
-            document.getElementById(id),
-            config
-        );
-    }
+    // function buildChart(id, config) {
+    //     const myChart = new Chart(
+    //         document.getElementById(id),
+    //         config
+    //     );
+    // }
 
-    buildChart("myChart");
+    // buildChart("inicialne", config);
 
 </script>
 

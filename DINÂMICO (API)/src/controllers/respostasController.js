@@ -68,9 +68,112 @@ function buscarGeneroMenor(req, res) {
     );
 }
 
+function buscar_de_0_a_7(req, res) {
+
+    respostasModel.buscar_de_0_a_7()
+    .then(
+        function (resultado) {
+            res.status(200).json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+function buscar_de_7_a_14(req, res) {
+    
+    respostasModel.buscar_de_7_a_14()
+    .then(
+        function (resultado) {
+            res.status(200).json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+function buscar_de_14_a_21(req, res) {
+    
+    respostasModel.buscar_de_14_a_21()
+    .then(
+        function (resultado) {
+            res.status(200).json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+function buscar_de_21_a_28(req, res) {
+    
+    respostasModel.buscar_de_21_a_28()
+    .then(
+        function (resultado) {
+            res.status(200).json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+
+function buscar_de_28_a_35(req, res) {
+    
+    respostasModel.buscar_de_28_a_35()
+    .then(
+        function (resultado) {
+            res.status(200).json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+function buscar_mais_de_35(req, res) {
+    
+    respostasModel.buscar_mais_de_35()
+    .then(
+        function (resultado) {
+            res.status(200).json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
 module.exports = {
     buscarEstadoMaior,
     buscarEstadoMenor,
     buscarGeneroMaior,
-    buscarGeneroMenor
+    buscarGeneroMenor,
+    buscar_de_0_a_7,
+    buscar_de_7_a_14,
+    buscar_de_14_a_21,
+    buscar_de_21_a_28,
+    buscar_de_28_a_35,
+    buscar_mais_de_35
 }

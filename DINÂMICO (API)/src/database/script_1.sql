@@ -45,45 +45,113 @@ INSERT INTO pergunta (pergunta, isTeatro) VALUES
     ('QUAL TIPO DE EVENTO CULTURAL MAIS DE INTERESSA?', 'nao'),
     ('QUAL MOTIVO PARA VOCÊ NUNCA TER IDO?', 'nao');
     
-SELECT
-    cadastro.nome AS 'Nome Cliente',
-    cadastro.ja_foi AS 'Já foi ao teatro?',
-    pergunta.pergunta AS 'Pergunta',
-    respostas.resposta AS 'Resposta'
-FROM cadastro
-JOIN respostas ON cadastro.idCadastro = respostas.fkCadastro
-JOIN pergunta ON respostas.fkPergunta = pergunta.idPergunta
-WHERE cadastro.ja_foi = 'nao';
-
-SELECT * FROM cadastro;
-
-SELECT nome, email FROM cadastro WHERE email = 'ana@example.com' AND senha = '123456';
-
--- EXEMPLO DE JOIN
+ SELECT * FROM cadastro;
+    
+-- KPI 1 - IDADE DE QUEM FOI A PRIMEIRA VEZ 0 até 7
 SELECT 
-	cadastro.nome as 'Nome',
-    cadastro.ja_foi as 'Já foi ao teatro?',
-	p.pergunta as 'Pergunta',
-    r.resposta as 'Resposta'
-		FROM pergunta as p
-        JOIN respostas as r
-			ON p.idPergunta = r.fkPergunta
-		LEFT JOIN cadastro
-			ON cadastro.idCadastro = r.fkCadastro;
-	
-SELECT * FROM pergunta join respostas on pergunta.idPergunta = respostas.fkPergunta;
+	respostas.resposta as Anos,
+	COUNT(resposta) as 'Respostas' FROM respostas
+    JOIN pergunta as p
+    ON p.idPergunta = respostas.fkPergunta
+    WHERE pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' AND respostas.resposta <= 7
+	GROUP BY resposta
+	ORDER BY respostas desc;
+    
+SELECT 
+    COUNT(respostas.resposta) AS 'Total de Respostas'
+FROM respostas
+JOIN pergunta AS p ON p.idPergunta = respostas.fkPergunta
+WHERE p.pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' 
+  AND respostas.resposta <= 7;
+    
+-- KPI 1 - IDADE DE QUEM FOI A PRIMEIRA VEZ 7 até 14
+SELECT 
+	respostas.resposta as Anos,
+	COUNT(resposta) as 'Respostas' FROM respostas
+    JOIN pergunta as p
+    ON p.idPergunta = respostas.fkPergunta
+    WHERE pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' AND respostas.resposta > 7 and respostas.resposta <= 14
+	GROUP BY resposta
+	ORDER BY respostas desc;
+    
+    SELECT 
+    COUNT(respostas.resposta) AS 'Total de Respostas'
+FROM respostas
+JOIN pergunta AS p ON p.idPergunta = respostas.fkPergunta
+WHERE p.pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' 
+	AND respostas.resposta > 7 and respostas.resposta <= 14;
+    
+-- KPI 1 - IDADE DE QUEM FOI A PRIMEIRA VEZ 14 até 21
+SELECT 
+	respostas.resposta as Anos,
+	COUNT(resposta) as 'Respostas' FROM respostas
+    JOIN pergunta as p
+    ON p.idPergunta = respostas.fkPergunta
+    WHERE pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' AND respostas.resposta > 14 and respostas.resposta <= 21
+	GROUP BY resposta
+	ORDER BY respostas desc;
+    
+SELECT 
+    COUNT(respostas.resposta) AS 'Total de Respostas'
+FROM respostas
+JOIN pergunta AS p ON p.idPergunta = respostas.fkPergunta
+WHERE p.pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' 
+	AND respostas.resposta > 14 and respostas.resposta <= 21;
+    
+-- KPI 1 - IDADE DE QUEM FOI A PRIMEIRA VEZ 21 até 28
+SELECT 
+	respostas.resposta as Anos,
+	COUNT(resposta) as 'Respostas' FROM respostas
+    JOIN pergunta as p
+    ON p.idPergunta = respostas.fkPergunta
+    WHERE pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' AND respostas.resposta > 21 and respostas.resposta <= 28
+	GROUP BY resposta
+	ORDER BY respostas desc;
+    
+SELECT 
+    COUNT(respostas.resposta) AS 'Total de Respostas'
+FROM respostas
+JOIN pergunta AS p ON p.idPergunta = respostas.fkPergunta
+WHERE p.pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' 
+	AND respostas.resposta > 21 and respostas.resposta <= 28;
+    
+-- KPI 1 - IDADE DE QUEM FOI A PRIMEIRA VEZ 28 até 35
+SELECT 
+	respostas.resposta as Anos,
+	COUNT(resposta) as 'Respostas' FROM respostas
+    JOIN pergunta as p
+    ON p.idPergunta = respostas.fkPergunta
+    WHERE pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' AND respostas.resposta > 28 and respostas.resposta <= 35
+	GROUP BY resposta
+	ORDER BY respostas desc;
+    
+SELECT 
+    COUNT(respostas.resposta) AS 'Total de Respostas'
+FROM respostas
+JOIN pergunta AS p ON p.idPergunta = respostas.fkPergunta
+WHERE p.pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' 
+  AND respostas.resposta > 28 and respostas.resposta <= 35;
+  
+    
+-- KPI 1 - IDADE DE QUEM FOI A PRIMEIRA VEZ 28 até 35
+SELECT 
+	respostas.resposta as Anos,
+	COUNT(resposta) as 'Respostas' FROM respostas
+    JOIN pergunta as p
+    ON p.idPergunta = respostas.fkPergunta
+    WHERE pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' AND respostas.resposta > 35
+	GROUP BY resposta
+	ORDER BY respostas desc;
 
-SELECT COUNT(resposta) AS Resposta, nome 
-FROM cadastro JOIN respostas
-ON cadastro.idCadastro = respostas.fkCadastro
-JOIN pergunta
-ON pergunta.idPergunta = respostas.fkPergunta
-GROUP BY pergunta;
+SELECT 
+    COUNT(respostas.resposta) AS 'Total de Respostas'
+FROM respostas
+JOIN pergunta AS p ON p.idPergunta = respostas.fkPergunta
+WHERE p.pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?' 
+  AND respostas.resposta > 35;
+    
 
-SELECT * FROM respostas;
-
-SELECT COUNT(DISTINCT(resposta)) as 'Respostas Distintas' FROM respostas;
-
+    
 
 -- KPI 1 - Gênero favorito 
 SELECT 
@@ -93,7 +161,8 @@ SELECT
     ON p.idPergunta = respostas.fkPergunta
     WHERE pergunta = 'QUAL SEU GÊNERO FAVORITO?'
 	GROUP BY resposta
-	ORDER BY respostas desc;
+	ORDER BY respostas desc
+    LIMIT 1;
     
 -- KPI 2 - MOTIVO DE QUEM NÃO VAI 
 SELECT 

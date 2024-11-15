@@ -70,7 +70,7 @@ button{
 /* DASHBOARD */
 .dash{
     display: flex;
-    width: 80%;
+    width: 75%;
     flex-direction: column;
     justify-content: end;
     /* border: 1px solid red; */
@@ -143,6 +143,7 @@ button{
     display: flex;
     border: 1px solid rgb(132, 97, 236);
     background-color: rgba(2, 7, 50, 0.338);
+    justify-content: center;
     height: 50%;
     width: 80%;
 }
