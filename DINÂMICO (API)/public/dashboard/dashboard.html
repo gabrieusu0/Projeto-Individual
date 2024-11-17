@@ -57,6 +57,9 @@
             <div class="conteudo">
                 <div class="grafico">
                     <div class="linha">
+                        <div style="align-items: center; display: flex;">
+                            <p style="color: white; font-size: 30px; text-align: center;" id="media">As pessoas de x anos são as que mais frequentam o ambiente de teatro</p>
+                        </div>
                         <!-- <canvas id="ja"></canvas> Adicionando quadro para pintar o gráfico -->
                     </div>
                 </div>
@@ -89,10 +92,10 @@
                         <p style="color: white;"> PREFEREM: </p>
                     </div>
                     <div class="kpi1">
-                        <p id="div_maior"></p>
+                        <p style="font-size: 26px;" id="div_mais_vai"></p>
                     </div>
                     <div class="kpi2">
-                        <p id="div_menor"></p>
+                        <p style="font-size: 26px;" id="div_menos_vai"></p>
                     </div>
                 </div>
             </div>
@@ -113,6 +116,8 @@
     var de_21_a_28;
     var de_28_a_35;
     var mais_de_35;
+    var mais_vai;
+    var menos_vai;
 
 
 
@@ -624,6 +629,61 @@
         dash.style.display = 'none';
         dash1.style.display = 'none';
 
+
+        fetch("/respostas/localMais", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    setTimeout(function () {
+                        document.getElementById("div_mais_vai").innerHTML = `${json[0].Resposta}`;
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        fetch("/respostas/localMenos", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    setTimeout(function () {
+                        document.getElementById("div_menos_vai").innerHTML = `${json[0].Resposta}`;
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+    }
+
         // const labels = [
         //     '0 até 7',
         //     '7 até 14',
@@ -691,7 +751,7 @@
         // };
 
         // buildChart("ja_nao", config3);
-    }
+
 
     // function buildChart(id, config) {
     //     const myChart = new Chart(

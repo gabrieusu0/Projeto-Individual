@@ -46,6 +46,16 @@ router.get("/mais_de_35", function (req, res) {
     respostasController.buscar_mais_de_35(req, res);
 });
 
+router.get("/localMais", function (req, res) {
+    respostasController.buscar_localMais(req, res);
+});
+
+
+router.get("/localMenos", function (req, res) {
+    respostasController.buscar_localMenos(req, res);
+});
+
+
 
 
 

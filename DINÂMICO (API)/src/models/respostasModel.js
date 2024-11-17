@@ -165,6 +165,43 @@ WHERE p.pergunta = 'QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?'
 
 
 
+function buscar_localMais() {
+
+  var instrucaoSql = `
+SELECT 
+	respostas.resposta as Resposta,
+	COUNT(resposta) as 'Respostas' FROM respostas
+    JOIN pergunta as p
+    ON p.idPergunta = respostas.fkPergunta
+    WHERE pergunta = 'QUAL TIPO DE EVENTO CULTURAL MAIS DE INTERESSA?'
+	GROUP BY resposta
+	ORDER BY respostas desc
+    LIMIT 1;
+    `;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+
+function buscar_localMenos() {
+
+  var instrucaoSql = `
+SELECT 
+	respostas.resposta as Resposta,
+	COUNT(resposta) as 'Respostas' FROM respostas
+    JOIN pergunta as p
+    ON p.idPergunta = respostas.fkPergunta
+    WHERE pergunta = 'QUAL TIPO DE EVENTO CULTURAL MAIS DE INTERESSA?'
+	GROUP BY resposta
+	ORDER BY respostas 
+    LIMIT 1;
+    `;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 module.exports = {
   buscarEstadoMaior,
   buscarEstadoMenor,
@@ -175,5 +212,7 @@ module.exports = {
   buscar_de_14_a_21,
   buscar_de_21_a_28,
   buscar_de_28_a_35,
-  buscar_mais_de_35
+  buscar_mais_de_35,
+  buscar_localMais,
+  buscar_localMenos
 }

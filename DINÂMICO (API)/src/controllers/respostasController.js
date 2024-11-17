@@ -165,6 +165,41 @@ function buscar_mais_de_35(req, res) {
     );
 }
 
+
+
+function buscar_localMenos(req, res) {
+    
+    respostasModel.buscar_localMenos()
+    .then(
+        function (resultado) {
+            res.status(200).json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+
+function buscar_localMais(req, res) {
+    
+    respostasModel.buscar_localMais()
+    .then(
+        function (resultado) {
+            res.status(200).json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
 module.exports = {
     buscarEstadoMaior,
     buscarEstadoMenor,
@@ -175,5 +210,7 @@ module.exports = {
     buscar_de_14_a_21,
     buscar_de_21_a_28,
     buscar_de_28_a_35,
-    buscar_mais_de_35
+    buscar_mais_de_35,
+    buscar_localMais,
+    buscar_localMenos
 }
