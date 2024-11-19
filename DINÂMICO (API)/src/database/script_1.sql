@@ -46,6 +46,18 @@ INSERT INTO pergunta (pergunta, isTeatro) VALUES
     ('QUAL MOTIVO PARA VOCÊ NUNCA TER IDO?', 'nao');
     
  SELECT * FROM cadastro;
+ 
+ -- KPI QUEM MAIS VAI
+ SELECT 
+	respostas.resposta as Anos,
+	COUNT(resposta) as 'Respostas' FROM respostas
+    JOIN pergunta as p
+    ON p.idPergunta = respostas.fkPergunta
+    WHERE pergunta = 'QUANTAS VEZES FOI?'
+	GROUP BY resposta
+	ORDER BY respostas desc
+    LIMIT 1;
+ 
     
 -- KPI 1 - IDADE DE QUEM FOI A PRIMEIRA VEZ 0 até 7
 SELECT 
@@ -182,7 +194,18 @@ SELECT
     ON p.idPergunta = respostas.fkPergunta
     WHERE pergunta = 'QUAL TIPO DE EVENTO CULTURAL MAIS DE INTERESSA?'
 	GROUP BY resposta
-	ORDER BY respostas desc;
+	ORDER BY respostas desc
+    LIMIT 1;
+    
+SELECT 
+	respostas.resposta as Resposta,
+	COUNT(resposta) as 'Respostas' FROM respostas
+    JOIN pergunta as p
+    ON p.idPergunta = respostas.fkPergunta
+    WHERE pergunta = 'QUAL TIPO DE EVENTO CULTURAL MAIS DE INTERESSA?'
+	GROUP BY resposta
+	ORDER BY respostas 
+    LIMIT 1;
     
     
 -- KPI 3 - QUANTOS JÁ FORAM OU NÃO AO TEATRO 

@@ -137,21 +137,22 @@ function carregarPerguntas(){
 
 function guardarPerguntas() {
 
-    if (div_sim.style.display == "flex") {
+        
+        if (div_sim.style.display == "flex") {
+            
+            var fkPergunta1Index = 1;
+            sessionStorage.setItem("fkPergunta1Mesmo", fkPergunta1Index);
+            // fkPergunta1 = sessionStorage.getItem("fkPergunta1Mesmo");
+            
+            var fkPergunta2Index = 2;
+            sessionStorage.setItem("fkPergunta2Mesmo", fkPergunta2Index);
+            // fkPergunta2 = sessionStorage.getItem("fkPergunta2Mesmo");
+            
+            var fkPergunta3Index = 3;
+            sessionStorage.setItem("fkPergunta3Mesmo", fkPergunta3Index);
+            // fkPergunta3 = sessionStorage.getItem("fkPergunta3Mesmo");
 
-        var fkPergunta1Index = 1;
-        sessionStorage.setItem("fkPergunta1Mesmo", fkPergunta1Index);
-        // fkPergunta1 = sessionStorage.getItem("fkPergunta1Mesmo");
-
-        var fkPergunta2Index = 2;
-        sessionStorage.setItem("fkPergunta2Mesmo", fkPergunta2Index);
-        // fkPergunta2 = sessionStorage.getItem("fkPergunta2Mesmo");
-
-        var fkPergunta3Index = 3;
-        sessionStorage.setItem("fkPergunta3Mesmo", fkPergunta3Index);
-        // fkPergunta3 = sessionStorage.getItem("fkPergunta3Mesmo");
-
-        var Pergunta1Index = document.getElementById("ipt_pergunta1").value;
+            var Pergunta1Index = document.getElementById("ipt_pergunta1").value;
         var Pergunta2Index = document.getElementById("slc_respostas").value;
         var Pergunta3Index = document.getElementById("ipt_pergunta3").value;
 
@@ -159,33 +160,41 @@ function guardarPerguntas() {
         sessionStorage.setItem("Pergunta2Mesmo", Pergunta2Index);
         sessionStorage.setItem("Pergunta3Mesmo", Pergunta3Index);
 
+        setTimeout(() => {
+            window.location = "cadastro.html";
+            }, "2000");
+        
 
         
     }else{
-
+        
         var fkPergunta4Index = 4;
         sessionStorage.setItem("fkPergunta4Mesmo", fkPergunta4Index);
-
+        
         var fkPergunta5Index = 5;
         sessionStorage.setItem("fkPergunta5Mesmo", fkPergunta5Index);
-
+        
         var fkPergunta6Index = 6;
         sessionStorage.setItem("fkPergunta6Mesmo", fkPergunta6Index);
-
-
+        
+        
         var Pergunta4Index = document.getElementById("slc_respostas4").value;
         var Pergunta5Index = document.getElementById("slc_respostas5").value;
         var Pergunta6Index = document.getElementById("slc_respostas6").value;
-
+        
         sessionStorage.setItem("Pergunta1Mesmo", Pergunta4Index);
         pergunta1 = sessionStorage.getItem("Pergunta1Mesmo");
-
+        
         sessionStorage.setItem("Pergunta2Mesmo", Pergunta5Index);
         pergunta2 = sessionStorage.getItem("Pergunta2Mesmo");
 
         sessionStorage.setItem("Pergunta3Mesmo", Pergunta6Index);
         pergunta3 = sessionStorage.getItem("Pergunta3Mesmo");
 
+        setTimeout(() => {
+            window.location = "cadastro.html";
+            }, "2000");
+        
     }
     
 }
@@ -196,7 +205,7 @@ function guardarPerguntas() {
 
 
 
-    // alert(`${Pergunta1Index} armazenado no session storage`)
+// alert(`${Pergunta1Index} armazenado no session storage`)
 
 
 

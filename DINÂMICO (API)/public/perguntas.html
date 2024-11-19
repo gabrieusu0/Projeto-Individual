@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style/estilo.css">
 
 </head>
+
 <body onload="carregarPerguntas()">
     <div class="header">
         <div class="elementos">
@@ -14,123 +16,183 @@
             <a href="login.html"><button>LOGIN</button></a>
         </div>
     </div>
-        <div class="principal">
-            <div id="div_sim" style="display: none;" class="cadastro">
-                <div class="questoes">
-                    <p>QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?</p>
-                    <input type="number" id="ipt_pergunta1" class="inputCadastro">
-                    
-                    <p>QUAL SEU GÊNERO FAVORITO?</p>
-                    <select class="inputCadastro" id="slc_respostas">
-                        <option value="#">GÊNEROS</option>
-                        <option value="Teatro de sombras">Teatro de sombras</option>
-                        <option value="Teatro de fantoches ou marionetes">Teatro de fantoches ou marionetes</option>
-                        <option value="Stand-up comedy">Stand-up comedy</option>
-                        <option value="Tragédia">Tragédia</option>
-                        <option value="Musical">Musical</option>
-                        <option value="Romance">Romance</option>
-                        <option value="Drama">Drama</option>
-                        <option value="Comédia">Comédia</option>
-                    </select>
-                    <p>QUANTAS VEZES FOI?</p>
-                    <input type="number" id="ipt_pergunta3" class="inputCadastro">
-                    <button onclick="guardarPerguntas()" class="button"><a href="cadastro.html">Cadastre já</a></button>        
-                </div>
-            </div>
+    <div class="principal">
+        <div id="div_sim" style="display: none;" class="cadastro">
+            <div class="questoes">
+                <p>QUANTOS ANOS TINHA QUANDO ASSISTIU PELA PRIMEIRA VEZ?</p>
+                <input oninput="analisar()" type="number" id="ipt_pergunta1" class="inputCadastro">
 
-<!-- Perguntas "Não" -->
-
-            <div id="div_nao" style="display: none;" class="cadastro">
-                <div class="questoes">
-                    <p>QUAL SEU ESTADO?</p>
-                    <select class="inputCadastro" id="slc_respostas4">
-                        <option value="#">ESTADOS</option>
-                        <option value="AC">Acre</option>
-                        <option value="AL">Alagoas</option>
-                        <option value="AM">Amazonas</option>
-                        <option value="BA">Bahia</option>
-                        <option value="CE">Ceará</option>
-                        <option value="ES">Espírito Santo</option>
-                        <option value="GO">Goiás</option>
-                        <option value="MA">Maranhão</option>
-                        <option value="MT">Mato Grosso</option>
-                        <option value="MS">Mato Grosso do Sul</option>
-                        <option value="MG">Minas Gerais</option>
-                        <option value="PA">Pará</option>
-                        <option value="PB">Paraíba</option>
-                        <option value="PR">Paraná</option>
-                        <option value="PE">Pernambuco</option>
-                        <option value="PI">Piauí</option>
-                        <option value="RJ">Rio de Janeiro</option>
-                        <option value="RN">Rio Grande do Norte</option>
-                        <option value="RS">Rio Grande do Sul</option>
-                        <option value="RO">Rondônia</option>
-                        <option value="RR">Roraima</option>
-                        <option value="SC">Santa Catarina</option>
-                        <option value="SP">São Paulo</option>
-                        <option value="SE">Sergipe</option>
-                        <option value="TO">Tocantins</option>
-                        <option value="DF">Distrito Federal</option>
-                    </select>
-                    
-                    <p>QUAL TIPO DE EVENTO CULTURAL MAIS DE INTERESSA?</p>
-                    <select class="inputCadastro" id="slc_respostas5">
-                        <option value="">Eventos</option>
-                        <option value="Exposição de Arte">Exposição de Arte</option>
-                        <option value="Festival de Música">Festival de Música</option>
-                        <option value="Teatro">Teatro</option>
-                        <option value="Dança">Dança</option>
-                        <option value="Cinema">Cinema</option>
-                        <option value="Literatura">Literatura</option>
-                        <option value="Festa Popular">Festa Popular</option>
-                        <option value="Feira de Artesanato">Feira de Artesanato</option>
-                        <option value="Shows ao Vivo">Shows ao Vivo</option>
-                        <option value="Cultura Gastronômica">Cultura Gastronômica</option>
-                        <option value="Sarau Literário">Sarau Literário</option>
-                        <option value="Oficina Cultural">Oficina Cultural</option>
-                        <option value="Carnaval">Carnaval</option>
-                        <option value="Performance Artística">Performance Artística</option>
-                        <option value="Concerto">Concerto</option>
-                        <option value="Palestra Cultural">Palestra Cultural</option>
-                        <option value="Lançamento de Livro">Lançamento de Livro</option>
-                        <option value="Ciclo de Filmes">Ciclo de Filmes</option>
-                        <option value="Mostra de Cinema">Mostra de Cinema</option>
-                        <option value="Outros">Outros</option>
-                    </select>
-                    
-                    <p>QUAL MOTIVO PARA VOCÊ NUNCA TER IDO?</p>
-                    <select class="inputCadastro" id="slc_respostas6">
-                        <option value="">MOTIVOS</option>
-                        <option value="Nunca tive interesse em teatro">Nunca tive interesse em teatro</option>
-                        <option value="Falta de tempo">Falta de tempo</option>
-                        <option value="Não gosto de peças teatrais">Não gosto de peças teatrais</option>
-                        <option value="Não tenho companhia para ir">Não tenho companhia para ir</option>
-                        <option value="Preços elevados dos ingressos">Preços elevados dos ingressos</option>
-                        <option value="Falta de opções de teatro na minha cidade">Falta de opções de teatro na minha cidade</option>
-                        <option value="Não sei onde comprar ingressos">Não sei onde comprar ingressos</option>
-                        <option value="Acredito que o teatro não é para mim">Acredito que o teatro não é para mim</option>
-                        <option value="Sempre escolho outras formas de lazer">Sempre escolho outras formas de lazer</option>
-                        <option value="Problemas de acessibilidade">Problemas de acessibilidade</option>
-                        <option value="Não estou familiarizado com a programação cultural">Não estou familiarizado com a programação cultural</option>
-                        <option value="Não sei o que esperar de uma peça de teatro">Não sei o que esperar de uma peça de teatro</option>
-                        <option value="Acho que é um tipo de cultura elitista">Acho que é um tipo de cultura elitista</option>
-                        <option value="Nunca me convidaram para ir">Nunca me convidaram para ir</option>
-                        <option value="Outros">Outros</option>
-                        
-                        
-                    </select>
-                    <button onclick="guardarPerguntas()" class="button" ><a href="cadastro.html">Cadastre já</a></button>        
-                </div>
+                <p>QUAL SEU GÊNERO FAVORITO?</p>
+                <select oninput="analisar()" class="inputCadastro" id="slc_respostas">
+                    <option value="#">GÊNEROS</option>
+                    <option value="Teatro de sombras">Teatro de sombras</option>
+                    <option value="Teatro de fantoches ou marionetes">Teatro de fantoches ou marionetes</option>
+                    <option value="Stand-up comedy">Stand-up comedy</option>
+                    <option value="Tragédia">Tragédia</option>
+                    <option value="Musical">Musical</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Comédia">Comédia</option>
+                </select>
+                <p>QUANTAS VEZES FOI?</p>
+                <input oninput="analisar()" type="number" id="ipt_pergunta3" class="inputCadastro">
+                <button disabled id="ipt_but1" onclick="guardarPerguntas()" class="button">Cadastre já</button>
+                <div id="div_msgFinal1"></div>
             </div>
-            <div>
-                <img class="imagemCadastro" src="img/cadastro2.jpg" alt="imagem ilustrativa da inserção do login">
-            </div> <!-- A TAG ESTÁ FORA DA DIV CADASTRO MAS DENTRO DA PRINCIPAL-->
-    </div>
-        <div class="quadrado">
-            <span style="font-size: 25px; margin-top: 10px;">Responda algumas perguntas:</span>
         </div>
-</body>
-</html>
-<script src="cadastrar.js">
 
+        <!-- Perguntas "Não" -->
+
+        <div id="div_nao" style="display: none;" class="cadastro">
+            <div class="questoes">
+                <p>QUAL SEU ESTADO?</p>
+                <select oninput="analisar()" class="inputCadastro" id="slc_respostas4">
+                    <option value="#">ESTADOS</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                    <option value="DF">Distrito Federal</option>
+                </select>
+
+                <p>QUAL TIPO DE EVENTO CULTURAL MAIS DE INTERESSA?</p>
+                <select oninput="analisar()" class="inputCadastro" id="slc_respostas5">
+                    <option value="#">Eventos</option>
+                    <option value="Exposição de Arte">Exposição de Arte</option>
+                    <option value="Festival de Música">Festival de Música</option>
+                    <option value="Teatro">Teatro</option>
+                    <option value="Dança">Dança</option>
+                    <option value="Cinema">Cinema</option>
+                    <option value="Literatura">Literatura</option>
+                    <option value="Festa Popular">Festa Popular</option>
+                    <option value="Feira de Artesanato">Feira de Artesanato</option>
+                    <option value="Shows ao Vivo">Shows ao Vivo</option>
+                    <option value="Cultura Gastronômica">Cultura Gastronômica</option>
+                    <option value="Sarau Literário">Sarau Literário</option>
+                    <option value="Oficina Cultural">Oficina Cultural</option>
+                    <option value="Carnaval">Carnaval</option>
+                    <option value="Performance Artística">Performance Artística</option>
+                    <option value="Concerto">Concerto</option>
+                    <option value="Palestra Cultural">Palestra Cultural</option>
+                    <option value="Lançamento de Livro">Lançamento de Livro</option>
+                    <option value="Ciclo de Filmes">Ciclo de Filmes</option>
+                    <option value="Mostra de Cinema">Mostra de Cinema</option>
+                    <option value="Outros">Outros</option>
+                </select>
+
+                <p>QUAL MOTIVO PARA VOCÊ NUNCA TER IDO?</p>
+                <select oninput="analisar()" class="inputCadastro" id="slc_respostas6">
+                    <option value="#">MOTIVOS</option>
+                    <option value="Nunca tive interesse em teatro">Nunca tive interesse em teatro</option>
+                    <option value="Falta de tempo">Falta de tempo</option>
+                    <option value="Não gosto de peças teatrais">Não gosto de peças teatrais</option>
+                    <option value="Não tenho companhia para ir">Não tenho companhia para ir</option>
+                    <option value="Preços elevados dos ingressos">Preços elevados dos ingressos</option>
+                    <option value="Falta de opções de teatro na minha cidade">Falta de opções de teatro na minha cidade</option>
+                    <option value="Não sei onde comprar ingressos">Não sei onde comprar ingressos</option>
+                    <option value="Acredito que o teatro não é para mim">Acredito que o teatro não é para mim</option>
+                    <option value="Sempre escolho outras formas de lazer">Sempre escolho outras formas de lazer</option>
+                    <option value="Problemas de acessibilidade">Problemas de acessibilidade</option>
+                    <option value="Não estou familiarizado com a programação cultural">Não estou familiarizado com a programação cultural</option>
+                    <option value="Não sei o que esperar de uma peça de teatro">Não sei o que esperar de uma peça de teatro</option>
+                    <option value="Acho que é um tipo de cultura elitista">Acho que é um tipo de cultura elitista</option>
+                    <option value="Nunca me convidaram para ir">Nunca me convidaram para ir</option>
+                    <option value="Outros">Outros</option>
+
+
+                </select>
+                <button disabled onclick="guardarPerguntas()" id="ipt_but2" class="button">Cadastre já</button>
+                <div id="div_msgFinal2"></div>
+
+            </div>
+        </div>
+        <div>
+            <img class="imagemCadastro" src="img/cadastro2.jpg" alt="imagem ilustrativa da inserção do login">
+        </div> <!-- A TAG ESTÁ FORA DA DIV CADASTRO MAS DENTRO DA PRINCIPAL-->
+    </div>
+    <div class="quadrado">
+        <span style="font-size: 25px; margin-top: 10px;">Responda algumas perguntas:</span>
+    </div>
+    <!-- <style>
+    body{
+        background-color: rgb(132, 131, 135);
+    }
+    </style> -->
+</body>
+
+</html>
+<script src="cadastrar.js"></script>
+<script>
+    // ipt_but1.disabled = true;
+// ipt_but2.disabled = true;
+
+function analisar() {
+        // if ((ipt_pergunta1 == '' && slc_respostas == '#' && ipt_pergunta3 == '') || (slc_respostas4 == '#' && slc_respostas5 == '#' && slc_respostas6 == '#')) {
+        //     div_msgFinal.innerHTML = `Todos os campos devem estar preenchidos!`;
+        //     return;
+        // }
+        console.log("cliquei");
+      var pergunta_1_sim = ipt_pergunta1.value;
+      var pergunta_2_sim = slc_respostas.value;
+      var pergunta_3_sim = ipt_pergunta3.value;
+      var pergunta_1_nao = slc_respostas4.value;
+      var pergunta_2_nao = slc_respostas5.value;
+      var pergunta_3_nao = slc_respostas6.value;
+
+  
+
+        if (
+        (sessionStorage.getItem("jafoiMesmo") == 'sim' && ((pergunta_1_sim == '' || pergunta_2_sim == '#' || pergunta_3_sim == '') && (pergunta_1_nao == '#' || pergunta_2_nao == '#' || pergunta_3_nao == '#'))) 
+        || 
+        (sessionStorage.getItem("jafoiMesmo") == 'nao' && ((pergunta_1_sim == '' || pergunta_2_sim == '#' || pergunta_3_sim == '') && (pergunta_1_nao == '#' || pergunta_2_nao == '#' || pergunta_3_nao == '#')))
+        ) {
+            div_msgFinal1.innerHTML = `Todos os campos devem estar preenchidos!`;
+            div_msgFinal2.innerHTML = `Todos os campos devem estar preenchidos!`;
+            console.log("preenchi");
+            ipt_but1.disabled = true;
+            ipt_but2.disabled = true;
+            ipt_but1.style.backgroundColor="rgb(132, 131, 135)";
+            ipt_but2.style.backgroundColor="rgb(132, 131, 135)";
+            
+        }else{
+            console.log("fiquei de xereca");
+            div_msgFinal1.innerHTML = ``;
+            div_msgFinal2.innerHTML = ``;
+            ipt_but1.disabled = false;
+            ipt_but2.disabled = false;
+            ipt_but1.style.backgroundColor ="rgb(132, 97, 236)";
+            ipt_but2.style.backgroundColor ="rgb(132, 97, 236)";
+
+        }
+        
+      
+    //   if((v_p1_sim == 1 && v_p2_sim == 1 && v_p3_sim == 1) || (v_p1_nao == 1 && v_p2_nao == 1 && v_p3_nao == 1)){ // se todas validações estiverem corretas as variáveis vão estar em 1, ou seja se toda estiverem com o valor 1 o usuário poderá clicar no butão consequentemente realizar de fato o cadastro
+    //     ipt_but.disabled = false;
+    //   }else{
+    //     ipt_but.disabled = true;  // este else é necessário pois vai desabilitar o cadastro sempre que as validações deixarem de ser verdadeiras fazendo com que a página bloqueie
+    //   }
+
+
+    }
 </script>

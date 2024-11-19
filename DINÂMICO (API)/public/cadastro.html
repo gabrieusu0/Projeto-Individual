@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style/estilo.css">
 </head>
 
-<body>
+<body style="overflow: hidden;">
     <div class="header">
         <div class="elementos">
             <p>ELBI</p>
@@ -18,11 +18,16 @@
     <div class="principal">
         <div class="cadastro">
             <h1>Cadastro</h1>
-            <input type="text" id="ipt_usuario" class="inputCadastro" placeholder="Digite o usuário:"><br>
-            <input type="text" id="ipt_email" class="inputCadastro" placeholder="Informe seu email:"><br>
-            <input type="password" id="ipt_senha" class="inputCadastro" placeholder="Informe sua senha:"><br>
-            <input type="password" id="ipt_senhaconfirmada" class="inputCadastro" placeholder="Confirme sua senha:"><br>
-            <button onclick="cadastrar()" class="button">Cadastre</button>
+            <input oninput="analisar()" type="text" id="ipt_usuario" class="inputCadastro" placeholder="Digite o usuário:"><br>
+            <span id="div_mensagem_usuario"></span>
+            <input disabled oninput="analisar()" type="text" id="ipt_email" class="inputCadastro" placeholder="Informe seu email:"><br>
+            <span id="div_mensagem_email"></span>
+            <input disabled oninput="analisar()" type="password" id="ipt_senha" class="inputCadastro" placeholder="Informe sua senha:"><br>
+            <span id="div_mensagem_senha"></span>
+            <input disabled oninput="analisar()" type="password" id="ipt_senhaconfirmada" class="inputCadastro" placeholder="Confirme sua senha:"><br>
+            <span id="div_mensagem_senha_confirmada"></span>
+            <button id="botao_cadastrar" disabled onclick="cadastrar()" class="button">Cadastre</button>
+            <div id="div_msgFinal"></div>
             <span id="mensagem_erro"></span>
 
         </div>
@@ -32,12 +37,172 @@
     </div>
 </body>
 
+
 </html>
 
-<script src="cadastrar.js">
+<script src="cadastrar.js"> </script>
+<script>
 
+        ipt_usuario.disabled = false;
+        ipt_email.disabled = true;
+        ipt_senha.disabled = true;
+        ipt_senhaconfirmada.disabled = true;
+
+    function analisar() {
+        // if ((ipt_pergunta1 == '' && slc_respostas == '#' && ipt_pergunta3 == '') || (slc_respostas4 == '#' && slc_respostas5 == '#' && slc_respostas6 == '#')) {
+        //     div_msgFinal.innerHTML = `Todos os campos devem estar preenchidos!`;
+        //     return;
+        // }
+        console.log("cliquei");
+      var usuario = ipt_usuario.value;
+      var email = ipt_email.value;
+      var senha = ipt_senha.value;
+      var senha_conf = ipt_senhaconfirmada.value;
+
+      var v_usu = 0;
+      var v_senha1 = 0;
+      var v_senha2 = 0;
+      var v_email = 0;
+
+
+
+      if (
+        usuario == '' || email == '' || senha == '' || senha_conf == ''
+      ) {
+            // div_msgFinal.innerHTML = `
+            // <span style="color: rgb(221, 85, 12);">
+            // Todos os campos devem estar preenchidos!    
+            // </span>
+            // `;
+            console.log("preenchi");
+            botao_cadastrar.disabled = true;
+            botao_cadastrar.style.backgroundColor="rgb(172, 146, 248)";
+            
+        }else{
+            div_msgFinal.innerHTML = ``
+        }
+        
+        // validação do usuário
+        
+        var usuarioTemMaiusculo = usuario.toLowerCase();
+        var usuarioTemMinusculo = usuario.toUpperCase();
+        var tamanhoUsuario = usuario.length;
+        if(tamanhoUsuario != 0 && tamanhoUsuario < 4){
+        div_mensagem_usuario.innerHTML = `
+        <span style="color: rgb(221, 85, 12);">
+        O usuário tem que ter ao menos 4 caracteres
+        </span>`
+        v_usu = 0;     
+        ipt_email.disabled = true;
+        ipt_senha.disabled = true;
+        ipt_senhaconfirmada.disabled = true;
+
+      }else{
+        div_mensagem_usuario.innerHTML = ``
+        v_usu = 1;
+        ipt_email.disabled = false;
+        ipt_senha.disabled = false;
+      }
+
+      // validação de senha
+
+      var senhaTemMaiusculo = senha.toLowerCase(); //transforma a senha toda em minúsculo
+      var senhaTemMinusculo = senha.toUpperCase(); // transforma a senha toda em maiúscula
+      var tamanhoSenha = senha.length; // variável que pega o tamanho da senha 
+      if(tamanhoSenha == 0){
+        div_mensagem_senha.innerHTML = ``; // checa se o campo estiver vazio
+        v_senha1 = 0;
+        ipt_senhaconfirmada.disabled = true;
+      }
+      else if (senha == senhaTemMaiusculo) {
+         div_mensagem_senha.innerHTML = `
+        <span style="color: rgb(221, 85, 12);">
+        A senha deve conter pelo menos uma letra maiúscula.
+        </span>
+        `; // checa se a senha contem algum caracter em maiúsculo
+         v_senha1 = 0;
+         ipt_senhaconfirmada.disabled = true;
+         
+      }else if (senha == senhaTemMinusculo){
+        div_mensagem_senha.innerHTML = `
+        <span style="color: rgb(221, 85, 12);">            
+        A senha deve conter pelo menos uma letra minúscula.
+        </span>`; // checa se a senha contem algum caracter em minúsculo
+        v_senha1 = 0;
+        ipt_senhaconfirmada.disabled = true;
+
+      }else if((senhaTemMaiusculo != senha) && (senhaTemMinusculo != senha)){
+        div_mensagem_senha.innerHTML = ``; // checa se a senha é válida
+        v_senha1 = 1;
+        ipt_senhaconfirmada.disabled = false;
+
+      }
+
+
+        if (senha != senha_conf && ipt_senhaconfirmada.disabled == false) {
+        div_mensagem_senha_confirmada.innerHTML = `
+        <span style="color: rgb(221, 85, 12);">
+        As senhas não coincidem.
+        </span>
+        `; 
+        v_senha2 = 0;
+
+      }   // checa se as senhas coincidem, se não exibe a mensagem "As senhas não coincidem" para o usuário
+      else{  
+        div_mensagem_senha_confirmada.innerHTML = ``;
+        v_senha2 = 1;
+      }
+
+      // validação do email
+
+      var index_email = email.indexOf('@'); // pega a casa onde estava a "casa" do caracter @
+
+      var index_com = email.indexOf('.com'); //pega a casa onde começa as "casas" do ".com"
+
+      var tamanhoEmail = email.length; // pega o tamanho do email
+
+      if(index_email == -1 && email.length == 0){ // verifica se não possui @ e se o valor está vazio
+        div_mensagem_email.innerHTML = ``
+        v_email = 0;
+        ipt_senhaconfirmada.disabled = true;
+        ipt_senha.disabled = true;
+
+      }else if(index_email == -1 && email.length != 0){ //verifica se não possui @ mesmo se existir valor dentro da input
+        div_mensagem_email.innerHTML = `
+        <span style="color: rgb(221, 85, 12);">
+        Email inválido, deve possuir @
+        </span>`
+        
+        v_email = 0;
+        ipt_senhaconfirmada.disabled = true;
+        ipt_senha.disabled = true;
+
+      }
+      else if (index_email > index_com){ // verifica se o @ vem depois do .com
+        div_mensagem_email.innerHTML = ` 
+        <span style="color: rgb(221, 85, 12);">
+        Email inválido, o @ deve vir antes do .com
+        </span>`
+        v_email = 0;
+        ipt_senhaconfirmada.disabled = true;
+        ipt_senha.disabled = true;
+      }else if (index_email < index_com){ // verifica se o @ vem antes do .com
+        div_mensagem_email.innerHTML = ``
+        v_email = 1;
+        ipt_senha.disabled = false;
+      }
+
+      
+      if((v_email == 1 && v_usu == 1) && (v_senha1 == 1 && v_senha2 == 1 )){ // se todas validações estiverem corretas as variáveis vão estar em 1, ou seja se toda estiverem com o valor 1 o usuário poderá clicar no butão consequentemente realizar de fato o cadastro
+        botao_cadastrar.disabled = false;
+        botao_cadastrar.style.backgroundColor ="rgb(132, 97, 236)";
+      }else{
+        botao_cadastrar.disabled = true;
+        botao_cadastrar.style.backgroundColor ="rgb(172, 146, 248)";
+      }
+
+    }
 </script>
-
     <!-- // // Array para armazenar empresas cadastradas para validação de código de ativação 
     // let listaEmpresasCadastradas = [];
 
