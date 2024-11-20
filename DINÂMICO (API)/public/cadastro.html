@@ -26,7 +26,7 @@
             <span id="div_mensagem_senha"></span>
             <input disabled oninput="analisar()" type="password" id="ipt_senhaconfirmada" class="inputCadastro" placeholder="Confirme sua senha:"><br>
             <span id="div_mensagem_senha_confirmada"></span>
-            <button id="botao_cadastrar" disabled onclick="cadastrar()" class="button">Cadastre</button>
+            <button id="botao_cadastrar" disabled onclick="guardarDados()" class="button">Cadastre</button>
             <div id="div_msgFinal"></div>
             <span id="mensagem_erro"></span>
 
@@ -196,6 +196,10 @@
       if((v_email == 1 && v_usu == 1) && (v_senha1 == 1 && v_senha2 == 1 )){ // se todas validações estiverem corretas as variáveis vão estar em 1, ou seja se toda estiverem com o valor 1 o usuário poderá clicar no butão consequentemente realizar de fato o cadastro
         botao_cadastrar.disabled = false;
         botao_cadastrar.style.backgroundColor ="rgb(132, 97, 236)";
+        ipt_usuario.disabled = false;
+        ipt_email.disabled = false;
+        ipt_senha.disabled = false;
+        ipt_senhaconfirmada.disabled = false;
       }else{
         botao_cadastrar.disabled = true;
         botao_cadastrar.style.backgroundColor ="rgb(172, 146, 248)";

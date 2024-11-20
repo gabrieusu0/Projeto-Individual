@@ -31,6 +31,7 @@ app.use("/usuarios", usuarioRouter);
 app.use("/respostas", respostasRouter); // linha 20
 
 
+
 app.listen(PORTA_APP, function () {
     console.log(`
     ##   ##  ######   #####             ####       ##     ######     ##              ##  ##    ####    ######  

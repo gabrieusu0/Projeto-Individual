@@ -61,6 +61,7 @@ function cadastrar(req, res) {
     var fkPergunta2 = req.body.fkPergunta2Server;
     var fkPergunta3 = req.body.fkPergunta3Server;
     var usuario = req.body.usuarioServer;
+    var condicao = req.body.condicaoServer;
     // var senhaConfirmada = req.body.senhaConfirmadaServer;
     console.log(req.body)
 
@@ -88,10 +89,12 @@ function cadastrar(req, res) {
         res.status(400).send("Sua senha está undefined!");
     }else if (fkPergunta3 == undefined) {
         res.status(400).send("Sua senha está undefined!");
+    }else if (condicao == undefined) {
+        res.status(400).send("Sua senha está undefined!");
     }else{
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha, usuario, jafoi, pergunta1, pergunta2, pergunta3, fkPergunta1, fkPergunta2, fkPergunta3)
+        usuarioModel.cadastrar(nome, email, senha, usuario, jafoi, pergunta1, pergunta2, pergunta3, fkPergunta1, fkPergunta2, fkPergunta3, condicao)
             .then(
                 function (resultado) {
                     res.json(resultado);

@@ -47,6 +47,9 @@ INSERT INTO pergunta (pergunta, isTeatro) VALUES
     
  SELECT * FROM cadastro;
  
+ -- UPDATE cadastro SET oque_procura = '${conhecer}' WHERE idCadastro = LAST_INSERT_ID();
+ 
+ 
  -- KPI QUEM MAIS VAI
  SELECT 
 	respostas.resposta as Anos,

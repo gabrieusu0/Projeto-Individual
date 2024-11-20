@@ -9,34 +9,67 @@ var pergunta6 = sessionStorage.getItem("Pergunta6Mesmo");
 var fkPergunta1;
 var fkPergunta2;
 var fkPergunta3;
-var usuario;
-var email;
-var senha;
+var usuario = sessionStorage.getItem("usuarioMesmo");
+var email = sessionStorage.getItem("emailMesmo");
+var senha = sessionStorage.getItem("senhaMesmo");
+var eai = sessionStorage.getItem("eaiMesmo");
 
 
 
 
-function cadastrar() {
 
-    var usuarioCad = ipt_usuario.value;
-    var emailCad = ipt_email.value;
-    var senhaCad = ipt_senha.value;
+function guardarDados() {
 
-    usuario = usuarioCad;
-    email = emailCad;
-    senha = senhaCad;
+    var usuarioCad = document.getElementById("ipt_usuario").value;
+    var emailCad = document.getElementById("ipt_email").value;
+    var senhaCad = document.getElementById("ipt_senha").value;
+
+
+    sessionStorage.setItem("usuarioMesmo", usuarioCad);
+    // alert(`${nomeIndex} armazenado no session storage`)
+    usuario = sessionStorage.getItem("usuarioMesmo");
+
+    sessionStorage.setItem("emailMesmo", emailCad);
+    // alert(`${jafoiIndex} armazenado no session storage`)
+    email = sessionStorage.getItem("emailMesmo");
+
+    sessionStorage.setItem("senhaMesmo", senhaCad);
+    // alert(`${senhaIndex} armazenado no session storage`)
+    senha = sessionStorage.getItem("senhaMesmo");
 
     console.log(usuario)
 
-    if (jafoi == 'sim') {
-        fkPergunta1 = sessionStorage.getItem("fkPergunta1Mesmo");
-        fkPergunta2 = sessionStorage.getItem("fkPergunta2Mesmo");
-        fkPergunta3 = sessionStorage.getItem("fkPergunta3Mesmo");
-    }else{
-        fkPergunta1 = sessionStorage.getItem("fkPergunta4Mesmo");
-        fkPergunta2 = sessionStorage.getItem("fkPergunta5Mesmo");
-        fkPergunta3 = sessionStorage.getItem("fkPergunta6Mesmo");
-    }
+
+    setTimeout(() => {
+        window.location = "prefere.html";
+        }, "2000");
+
+}
+
+
+function conhecer() {
+    var eai1 = 'conhecer';
+    sessionStorage.setItem("eaiMesmo", eai1);
+
+
+    setTimeout(() => {
+        cadastrar();
+    }, 3000);
+
+}
+
+function partipar() {
+    var eai2 = 'participar';
+    sessionStorage.setItem("eaiMesmo", eai2);
+    
+
+    setTimeout(() => {
+        cadastrar();
+    }, 3000);
+
+}
+
+
 
 
 
@@ -49,6 +82,19 @@ function cadastrar() {
     // Verificando se há algum campo em branco
 
 
+    function cadastrar() {
+
+        if (jafoi == 'sim') {
+            fkPergunta1 = sessionStorage.getItem("fkPergunta1Mesmo");
+            fkPergunta2 = sessionStorage.getItem("fkPergunta2Mesmo");
+            fkPergunta3 = sessionStorage.getItem("fkPergunta3Mesmo");
+        }else{
+            fkPergunta1 = sessionStorage.getItem("fkPergunta4Mesmo");
+            fkPergunta2 = sessionStorage.getItem("fkPergunta5Mesmo");
+            fkPergunta3 = sessionStorage.getItem("fkPergunta6Mesmo");
+        } 
+
+        eai = sessionStorage.getItem("eaiMesmo");
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", { //url chama função
@@ -69,7 +115,8 @@ function cadastrar() {
             fkPergunta1Server: fkPergunta1,
             fkPergunta2Server: fkPergunta2,
             fkPergunta3Server: fkPergunta3,
-            usuarioServer: usuario
+            usuarioServer: usuario,
+            condicaoServer: eai
             // senhaConfirmadaServer: confirmacaoSenha
 
         }),
@@ -90,7 +137,20 @@ function cadastrar() {
     //     alert(`#ERRO: ${resposta}, Usuário ou email já cadastrados`)
     //   });
 
-    console.log(jafoi)
+   console.log({
+    nomeServer: nome,
+    emailServer: email,
+    senhaServer: senha,
+    jafoiServer: jafoi,
+    pergunta1Server: pergunta1,
+    pergunta2Server: pergunta2,
+    pergunta3Server: pergunta3,
+    fkPergunta1Server: fkPergunta1,
+    fkPergunta2Server: fkPergunta2,
+    fkPergunta3Server: fkPergunta3,
+    usuarioServer: usuario,
+    condicaoServer: eai
+});
     
 
 

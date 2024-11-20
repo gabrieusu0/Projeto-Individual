@@ -191,7 +191,9 @@ button{
     width: 65%;
     height: 60%;
     /* border: 1px solid red; */
+    border: none;
     background-color: rgb(183, 0, 255);
+    border-radius: 15px;
 }
 
 .tamanho_participar{
@@ -205,6 +207,8 @@ button{
 .partipar{
     width: 65%;
     height: 60%;
-    /* border: 1px solid red; */
+    border: none;
     background-color: aqua;
+    border-radius: 15px;
+
 }

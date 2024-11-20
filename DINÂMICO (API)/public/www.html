@@ -1,89 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste</title>
+    <title>Gráfico de Barras</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #2b2b2b;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        canvas {
+            margin-top: 20px;
+        }
+    </style>
 </head>
+<body>
+    <h1>Gráfico de Barras com Título Acima de Cada Barra</h1>
+    <canvas id="customBarChart"></canvas>
 
-<body onload="estado(), estadoMenor()">
-    <div>
-        <!-- <button onclick="estado()">Estado mais frequente</button> -->
-        <div id="div_mensagem"></div>
-        <!-- <button onclick="estadoMenor()">Estado menos frequente</button> -->
-        <div id="div_mensagem1"></div>
-    </div>
+    <script>
+        const labels = ['Barra 1', 'Barra 2']; // Rótulos das barras
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Valores',
+                backgroundColor: ['rgb(75, 192, 192)', 'rgb(255, 99, 132)'], // Cor de cada barra
+                borderColor: ['rgb(75, 192, 192)', 'rgb(255, 99, 132)'], // Borda de cada barra
+                data: [30, 50], // Valores das barras
+            }]
+        };
+
+        const config = {
+            type: 'bar', // Tipo de gráfico
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Gráfico de Barras Personalizado',
+                        color: 'white',
+                        font: {
+                            size: 20,
+                        },
+                        padding: { top: 10, bottom: 10 }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: (tooltipItems) => {
+                                return tooltipItems[0].label; // Mostra o título acima
+                            },
+                            label: (tooltipItem) => {
+                                return `Valor: ${tooltipItem.raw}`; // Mostra o valor
+                            }
+                        }
+                    },
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: 'white',
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.2)',
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: 'white',
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.2)',
+                        },
+                        beginAtZero: true, // Começa do zero
+                    }
+                }
+            }
+        };
+
+        const customBarChart = new Chart(
+            document.getElementById('customBarChart'),
+            config
+        );
+    </script>
 </body>
-
 </html>
-
-<script>
-
-// setInterval(estado(), 5000) - Atualizar
-
-    function estado() {
-
-
-        fetch("/respostas/estadoMaior", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    setTimeout(function () {
-                        document.getElementById("div_mensagem").innerHTML = `O estado é ${json[0].Resposta}`;
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            }
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
-    }
-
-    function estadoMenor() {
-
-
-        fetch("/respostas/estadoMenor", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    setTimeout(function () {
-                        document.getElementById("div_mensagem1").innerHTML = `O estado é ${json[0].Resposta}`;
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            }
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
-    }
-
-</script>
