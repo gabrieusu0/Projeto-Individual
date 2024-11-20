@@ -92,16 +92,6 @@ button{
     width: 100%;
 }
 
-.grafico{
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    justify-content: center;
-    height: 100%;
-    width: 50%;
-    /* border: 1px solid red; */
-}
-
 .kpis{
     display: flex;
     flex-direction: column;
@@ -111,6 +101,7 @@ button{
     width: 45%;
     /* border: 1px solid rgb(0, 179, 255); */
     color: black;
+    text-transform: uppercase;
 }
 
 .kpis p{
@@ -146,4 +137,74 @@ button{
     justify-content: center;
     height: 50%;
     width: 80%;
+}
+
+.grafico{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+    /* border: 1px solid red; */
+}
+
+.grafico1{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+    height: 100%;
+    width: 50%;
+    /* border: 1px solid red; */
+}
+
+.titulo_querem{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+}
+
+
+.querem{
+    display: flex;
+    height: 70%;
+    width: 80%;
+    flex-direction: row;
+    align-items: center;
+    /* border: 1px solid red; */
+    justify-content: space-around;
+
+}
+
+.tamanho_conhecer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+
+.conhecer{
+    width: 65%;
+    height: 60%;
+    /* border: 1px solid red; */
+    background-color: rgb(183, 0, 255);
+}
+
+.tamanho_participar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.partipar{
+    width: 65%;
+    height: 60%;
+    /* border: 1px solid red; */
+    background-color: aqua;
 }

@@ -31,9 +31,19 @@
                 <span>SEGUNDO NOSSO INDICADORES, APENAS 3 PESSOAS A CADA 10 JÁ ASSISTIRAM A UMA PEÇA DE TEATRO</span>
             </div>
             <div class="conteudo">
-                <div class="grafico">
-                    <div id="graficomesmo" class="linha">
-                        <!-- <canvas id="inicialne"></canvas> Adicionando quadro para pintar o gráfico -->
+                <div class="grafico1">
+                    <div class="titulo_querem">
+                        <p style="color: white;"> DE TODOS OS NOSSOS USUÁRIOS: </p>
+                    </div>
+                    <div class="querem">
+                        <div class="tamanho_conhecer">
+                            <p style="color: white;"> QUEREM CONHECER </p>
+                            <div class="conhecer"></div>
+                        </div>
+                        <div class="tamanho_participar">
+                            <p style="color: white;"> QUEREM PARTICIPAR </p>
+                            <div class="partipar"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="kpis">
@@ -56,11 +66,7 @@
             </div>
             <div class="conteudo">
                 <div class="grafico">
-                    <div class="linha">
-                        <div style="align-items: center; display: flex;">
-                            <p style="color: white; font-size: 30px; text-align: center;" id="media">As pessoas de x anos são as que mais frequentam o ambiente de teatro</p>
-                        </div>
-                        <!-- <canvas id="ja"></canvas> Adicionando quadro para pintar o gráfico -->
+                    <div id="graficomesmo" class="linha">
                     </div>
                 </div>
                 <div class="kpis">
@@ -83,9 +89,6 @@
             </div>
             <div class="conteudo">
                 <div class="grafico">
-                    <div class="linha">
-                        <!-- <canvas id="ja_nao"></canvas> Adicionando quadro para pintar o gráfico -->
-                    </div>
                 </div>
                 <div class="kpis">
                     <div style="height: 100px;">
@@ -325,79 +328,6 @@
         dash1.style.display = 'flex';
         
 
-        graficomesmo.innerHTML = `<canvas id="inicialne"> </canvas>`
-
-
-        const labels = [
-            '0 até 7',
-            '7 até 14',
-            '14 até 21',
-            '21 até 28',
-            '28 até 35',
-            'Mais',
-        ];
-
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'Foram ao Teatro',
-                backgroundColor: 'rgb(132, 97, 236)',
-                borderColor: 'rgb(132, 97, 236)',
-                data: [de_0_a_7, de_7_a_14, de_14_a_21, de_21_a_28, de_28_a_35, mais_de_35],
-            }
-            ]
-        };
-
-        const config = {
-            type: 'line',
-            data: data,
-            options: {
-                responsive: true,
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Primeira vez ao Teatro por Faixa Etária',
-                        color: 'white',  // Cor do título
-                        font: {
-                            size: 18,
-                            // weight: 'bold',
-                        },
-                        padding: { top: 20, bottom: 20 }
-                    },
-                    legend: {
-                        labels: {
-                            color: 'white',  // Cor do texto da legenda
-                            font: {
-                                size: 14
-                            }
-                        }
-                    }
-                },
-                scales: {
-                    x: {
-                        ticks: {
-                            color: 'white',  // Cor dos números no eixo X
-                        },
-                        grid: {
-                            color: 'white', // Cor das linhas de grade no eixo X
-                        }
-                    },
-                    y: {
-                        ticks: {
-                            color: 'white',  // Cor dos números no eixo Y
-                        },
-                        grid: {
-                            color: 'white', // Cor das linhas de grade no eixo Y
-                        }
-                    }
-                }
-            }
-        };
-
-        const myChart = new Chart(
-            document.getElementById('inicialne'),
-            config
-        );
 
     }
 
@@ -547,74 +477,80 @@
         dash2.style.display = 'none';
         dash1.style.display = 'none';
 
-        // const labels = [
-        //     'Romance',
-        //     'Trágedia',
-        //     'Stand-up',
-        //     'Fantoche',
-        //     'Drama',
-        //     'Musical',
-        // ];
 
-        // const data = {
-        //     labels: labels,
-        //     datasets: [{
-        //         label: 'Gênero preferido',
-        //         backgroundColor: 'rgb(132, 97, 236)',
-        //         borderColor: 'rgb(132, 97, 236)',
-        //         data: [28, 30, 36, 33, 23, 40],
-        //     }
-        //     ]
-        // };
-
-        // const config2 = {
-        //     type: 'line',
-        //     data: data,
-        //     options: {
-        //         responsive: true,
-        //         plugins: {
-        //             title: {
-        //                 display: true,
-        //                 text: 'Teste do já foi',
-        //                 color: 'white',  // Cor do título
-        //                 font: {
-        //                     size: 18,
-        //                     // weight: 'bold',
-        //                 },
-        //                 padding: { top: 20, bottom: 20 }
-        //             },
-        //             legend: {
-        //                 labels: {
-        //                     color: 'white',  // Cor do texto da legenda
-        //                     font: {
-        //                         size: 14
-        //                     }
-        //                 }
-        //             }
-        //         },
-        //         scales: {
-        //             x: {
-        //                 ticks: {
-        //                     color: 'white',  // Cor dos números no eixo X
-        //                 },
-        //                 grid: {
-        //                     color: 'white', // Cor das linhas de grade no eixo X
-        //                 }
-        //             },
-        //             y: {
-        //                 ticks: {
-        //                     color: 'white',  // Cor dos números no eixo Y
-        //                 },
-        //                 grid: {
-        //                     color: 'white', // Cor das linhas de grade no eixo Y
-        //                 }
-        //             }
-        //         }
-        //     }
-        // };
+        graficomesmo.innerHTML = `<canvas id="inicialne"> </canvas>`
 
 
-        // buildChart("ja", config2);
+const labels = [
+    '0 até 7',
+    '7 até 14',
+    '14 até 21',
+    '21 até 28',
+    '28 até 35',
+    'Mais',
+];
+
+const data = {
+    labels: labels,
+    datasets: [{
+        label: 'Foram ao Teatro',
+        backgroundColor: 'rgb(132, 97, 236)',
+        borderColor: 'rgb(132, 97, 236)',
+        data: [de_0_a_7, de_7_a_14, de_14_a_21, de_21_a_28, de_28_a_35, mais_de_35],
+    }
+    ]
+};
+
+const config = {
+    type: 'line',
+    data: data,
+    options: {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Primeira vez ao Teatro por Faixa Etária',
+                color: 'white',  // Cor do título
+                font: {
+                    size: 18,
+                    // weight: 'bold',
+                },
+                padding: { top: 20, bottom: 20 }
+            },
+            legend: {
+                labels: {
+                    color: 'white',  // Cor do texto da legenda
+                    font: {
+                        size: 14
+                    }
+                }
+            }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: 'white',  // Cor dos números no eixo X
+                },
+                grid: {
+                    color: 'white', // Cor das linhas de grade no eixo X
+                }
+            },
+            y: {
+                ticks: {
+                    color: 'white',  // Cor dos números no eixo Y
+                },
+                grid: {
+                    color: 'white', // Cor das linhas de grade no eixo Y
+                }
+            }
+        }
+    }
+};
+
+const myChart = new Chart(
+    document.getElementById('inicialne'),
+    config
+);
 
 
     }
@@ -683,84 +619,6 @@
         })
 
     }
-
-        // const labels = [
-        //     '0 até 7',
-        //     '7 até 14',
-        //     '14 até 21',
-        //     '21 até 28',
-        //     '28 até 35',
-        //     'Mais',
-        // ];
-
-        // const data = {
-        //     labels: labels,
-        //     datasets: [{
-        //         label: 'Foram ao Teatro',
-        //         backgroundColor: 'rgb(132, 97, 236)',
-        //         borderColor: 'rgb(132, 97, 236)',
-        //         data: [28, 30, 36, 33, 23, 40],
-        //     }
-        //     ]
-        // };
-
-        // const config3 = {
-        //     type: 'line',
-        //     data: data,
-        //     options: {
-        //         responsive: true,
-        //         plugins: {
-        //             title: {
-        //                 display: true,
-        //                 text: 'Teste não foram',
-        //                 color: 'white',  // Cor do título
-        //                 font: {
-        //                     size: 18,
-        //                     // weight: 'bold',
-        //                 },
-        //                 padding: { top: 20, bottom: 20 }
-        //             },
-        //             legend: {
-        //                 labels: {
-        //                     color: 'white',  // Cor do texto da legenda
-        //                     font: {
-        //                         size: 14
-        //                     }
-        //                 }
-        //             }
-        //         },
-        //         scales: {
-        //             x: {
-        //                 ticks: {
-        //                     color: 'white',  // Cor dos números no eixo X
-        //                 },
-        //                 grid: {
-        //                     color: 'white', // Cor das linhas de grade no eixo X
-        //                 }
-        //             },
-        //             y: {
-        //                 ticks: {
-        //                     color: 'white',  // Cor dos números no eixo Y
-        //                 },
-        //                 grid: {
-        //                     color: 'white', // Cor das linhas de grade no eixo Y
-        //                 }
-        //             }
-        //         }
-        //     }
-        // };
-
-        // buildChart("ja_nao", config3);
-
-
-    // function buildChart(id, config) {
-    //     const myChart = new Chart(
-    //         document.getElementById(id),
-    //         config
-    //     );
-    // }
-
-    // buildChart("inicialne", config);
 
 </script>
 
