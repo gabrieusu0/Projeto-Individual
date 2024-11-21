@@ -55,6 +55,21 @@ router.get("/localMenos", function (req, res) {
     respostasController.buscar_localMenos(req, res);
 });
 
+router.get("/conhecer", function (req, res) {
+    respostasController.buscar_conhecer(req, res);
+});
+
+router.get("/participar", function (req, res) {
+    respostasController.buscar_participar(req, res);
+});
+
+router.get("/motivo", function (req, res) {
+    respostasController.buscar_motivo(req, res);
+});
+
+
+
+
 
 
 

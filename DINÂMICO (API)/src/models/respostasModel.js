@@ -202,6 +202,50 @@ SELECT
   return database.executar(instrucaoSql);
 }
 
+function buscar_conhecer() {
+
+  var instrucaoSql = `
+ SELECT 
+	oque_procura as 'O que procura?',
+	COUNT(oque_procura) as 'Respostas' FROM cadastro
+    WHERE oque_procura = 'conhecer';
+    `;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function buscar_participar() {
+
+  var instrucaoSql = `
+ SELECT 
+	oque_procura as 'O que procura?',
+	COUNT(oque_procura) as 'Respostas' FROM cadastro
+    WHERE oque_procura = 'participar';
+    `;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function buscar_motivo() {
+
+  var instrucaoSql = `
+SELECT 
+	respostas.resposta as Resposta,
+	COUNT(resposta) as 'Respostas' FROM respostas
+    JOIN pergunta as p
+    ON p.idPergunta = respostas.fkPergunta
+    WHERE pergunta = 'QUAL MOTIVO PARA VOCÊ NUNCA TER IDO?'
+	GROUP BY resposta
+	ORDER BY respostas desc
+    LIMIT 2;
+    `;
+
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 module.exports = {
   buscarEstadoMaior,
   buscarEstadoMenor,
@@ -214,5 +258,8 @@ module.exports = {
   buscar_de_28_a_35,
   buscar_mais_de_35,
   buscar_localMais,
-  buscar_localMenos
+  buscar_localMenos,
+  buscar_conhecer,
+  buscar_participar,
+  buscar_motivo
 }

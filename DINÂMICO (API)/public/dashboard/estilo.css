@@ -67,12 +67,29 @@ button{
     font-size: 25px;
 }
 
+a {
+    text-decoration: none; 
+    color: inherit; 
+}
+
+a, button{
+    cursor: pointer; 
+}
+
 /* DASHBOARD */
 .dash{
     display: flex;
     width: 75%;
     flex-direction: column;
     justify-content: end;
+    /* border: 1px solid red; */
+}
+
+.inicio{
+    display: flex;
+    width: 75%;
+    flex-direction: column;
+    justify-content: center;
     /* border: 1px solid red; */
 }
 
@@ -175,6 +192,8 @@ button{
     align-items: center;
     /* border: 1px solid red; */
     justify-content: space-around;
+    text-transform: uppercase;
+
 
 }
 
@@ -188,12 +207,23 @@ button{
 
 
 .conhecer{
+    display: flex;
     width: 65%;
     height: 60%;
+    align-items: center;
+    justify-content: center;
     /* border: 1px solid red; */
     border: none;
     background-color: rgb(183, 0, 255);
     border-radius: 15px;
+}
+
+.conhecer p {
+    font-size: 70px;
+}
+
+.partipar p {
+    font-size: 70px;
 }
 
 .tamanho_participar{
@@ -205,7 +235,84 @@ button{
 }
 
 .partipar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 65%;
+    height: 60%;
+    border: none;
+    background-color: aqua;
+    border-radius: 15px;
+
+}
+
+
+
+
+
+
+/*  */
+
+
+.querem2{
+    display: flex;
+    height: 70%;
+    width: 80%;
+    flex-direction: column;
+    align-items: center;
+    /* border: 1px solid red; */
+    justify-content: space-around;
+    text-transform: uppercase;
+
+
+}
+
+.tamanho_conhecer2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+}
+
+
+.conhecer2{
+    display: flex;
+    width: 100%;
+    height: 60%;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid red; */
+    border: none;
+    background-color: rgb(183, 0, 255);
+    border-radius: 15px;
+}
+
+.conhecer2 p {
+    font-size: 60px;
+    margin: 0;
+    padding: 0;
+}
+
+.partipar2 p {
+    font-size: 60px;
+    margin: 0;
+    padding: 0;
+}
+
+.tamanho_participar2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+}
+
+.partipar2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
     height: 60%;
     border: none;
     background-color: aqua;

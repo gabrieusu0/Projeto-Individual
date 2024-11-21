@@ -200,6 +200,55 @@ function buscar_localMais(req, res) {
     );
 }
 
+
+function buscar_conhecer(req, res) {
+    
+    respostasModel.buscar_conhecer()
+    .then(
+        function (resultado) {
+            res.status(200).json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+function buscar_participar(req, res) {
+    
+    respostasModel.buscar_participar()
+    .then(
+        function (resultado) {
+            res.status(200).json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+function buscar_motivo(req, res) {
+    
+    respostasModel.buscar_motivo()
+    .then(
+        function (resultado) {
+            res.status(200).json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
 module.exports = {
     buscarEstadoMaior,
     buscarEstadoMenor,
@@ -212,5 +261,8 @@ module.exports = {
     buscar_de_28_a_35,
     buscar_mais_de_35,
     buscar_localMais,
-    buscar_localMenos
+    buscar_localMenos,
+    buscar_conhecer,
+    buscar_participar,
+    buscar_motivo
 }

@@ -46,8 +46,19 @@ INSERT INTO pergunta (pergunta, isTeatro) VALUES
     ('QUAL MOTIVO PARA VOCÊ NUNCA TER IDO?', 'nao');
     
  SELECT * FROM cadastro;
+ USE elbi;
  
  -- UPDATE cadastro SET oque_procura = '${conhecer}' WHERE idCadastro = LAST_INSERT_ID();
+ -- CONHECER OU PARTICIPAR
+ SELECT 
+	oque_procura as 'O que procura?',
+	COUNT(oque_procura) as 'Respostas' FROM cadastro
+    WHERE oque_procura = 'conhecer';
+    
+ SELECT 
+	oque_procura as 'O que procura?',
+	COUNT(oque_procura) as 'Respostas' FROM cadastro
+    WHERE oque_procura = 'participar';
  
  
  -- KPI QUEM MAIS VAI
@@ -187,7 +198,8 @@ SELECT
     ON p.idPergunta = respostas.fkPergunta
     WHERE pergunta = 'QUAL MOTIVO PARA VOCÊ NUNCA TER IDO?'
 	GROUP BY resposta
-	ORDER BY respostas desc;
+	ORDER BY respostas desc
+    LIMIT 2;
     
 -- KPI 2 - QUAL TIPO DE EVENTO CULTURAL MAIS DE INTERESSA
 SELECT 
@@ -212,10 +224,24 @@ SELECT
     
     
 -- KPI 3 - QUANTOS JÁ FORAM OU NÃO AO TEATRO 
+    
+SELECT 
+	COUNT(ja_foi) as 'Contador' FROM cadastro;
+    
 SELECT 
 	cadastro.ja_foi as 'Já foi?',
 	COUNT(ja_foi) as 'Contador' FROM cadastro
 	GROUP BY ja_foi;
+    
+    SELECT 
+    (COUNT(CASE WHEN ja_foi = 'sim' THEN 1 END) / COUNT(*)) * 10 AS 'A cada 10 pessoas'
+FROM cadastro;
+
+/*
+Conta o número de pessoas que foram ao teatro (ja_foi = 'sim').
+Divide pela contagem total de registros (113 pessoas).
+Multiplica o resultado por 10 para calcular a média de pessoas a cada 10 que foram ao teatro.
+*/
 
 
 -- pessoas totais = 111

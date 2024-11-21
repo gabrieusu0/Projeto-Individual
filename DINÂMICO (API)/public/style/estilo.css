@@ -8,6 +8,15 @@ html, body {
     /* color: rgb(221, 85, 12); */
 }
 
+a {
+    text-decoration: none; 
+    color: inherit; 
+}
+
+a, button, img{
+    cursor: pointer; 
+}
+
 body::-webkit-scrollbar {
     display: none; /* Oculta a barra de rolagem no Webkit */
 }
@@ -49,10 +58,9 @@ body::-webkit-scrollbar {
     justify-content: center;
     height: 100%;
     width: 100%;
-    position: relative;
     color: white;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/inicial.jpg'); /* Cor preta com 50% de opacidade */
-    background-size: cover; /* imagem ocupe toda a área*/
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/inicial.jpg'); 
+    background-size: cover; 
   }
 
 
@@ -239,20 +247,12 @@ button{
     justify-content: center;
     height: 100%;
     width: 100%;
-    position: relative;
     color: white;
-    background-color: rgba(0, 0, 0, 0.7); /* Cor preta com 50% de opacidade */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/cortina.png'); 
+    background-size: cover;
   }
 
-.banner_prefere::before { /*before indica algo que vem antes, ou seja, atras do banner*/
-    content: ""; /*obrigatório*/
-    position: absolute; /*mesmo tamanho do elemento .banner e deixar o texto sobreposto*/
-    inset: 0; /*Essa propriedade equivale à top: 0; right: 0; bottom: 0; left: 0.*/
-    background-image: url('../img/cortina.png');
-    background-size: cover; /* imagem ocupe toda a área*/
-    background-position: bottom; /*deixa a parte de baixo mais visivel*/
-    z-index: -2; /*pra forçar a imagem a ir "pra baixo" do texto*/
-}
+/*  */
 
 .banner_prefere .container {
     display: flex;
@@ -305,20 +305,10 @@ button{
     justify-content: center;
     height: 100%;
     width: 100%;
-    position: relative;
     color: white;
-    background-color: rgba(0, 0, 0, 0.7); /* Cor preta com 50% de opacidade */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/dana.jpg'); 
+    background-size: cover;
   }
-
-.banner_row::before { /*before indica algo que vem antes, ou seja, atras do banner*/
-    content: ""; /*obrigatório*/
-    position: absolute; /*mesmo tamanho do elemento .banner e deixar o texto sobreposto*/
-    inset: 0; /*Essa propriedade equivale à top: 0; right: 0; bottom: 0; left: 0.*/
-    background-image: url('../img/dana.jpg');
-    background-size: cover; /* imagem ocupe toda a área*/
-    background-position: bottom; /*deixa a parte de baixo mais visivel*/
-    z-index: -2; /*pra forçar a imagem a ir "pra baixo" do texto*/
-}
 
 .banner_row .container {
     display: flex;
