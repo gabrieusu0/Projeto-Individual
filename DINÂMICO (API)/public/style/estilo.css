@@ -18,7 +18,7 @@ a, button, img{
 }
 
 body::-webkit-scrollbar {
-    display: none; /* Oculta a barra de rolagem no Webkit */
+    display: none; /* Oculta a barra de rolagem */
 }
 
 .header{
@@ -66,7 +66,7 @@ body::-webkit-scrollbar {
 
 .banner .container {
     display: flex;
-    flex-direction: column; /* Coloca os elementos em uma coluna */
+    flex-direction: column; 
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -94,7 +94,7 @@ body::-webkit-scrollbar {
     font-size: 15px;
 }
 
-input::placeholder { /*pseudoclasse */
+input::placeholder { /*pseudoclasse, mexe dentro do atributo*/
     color: black; 
     text-align: center;
 }
@@ -204,8 +204,8 @@ button{
 }
 
 .imagemCadastro {
-    width: 50vw; /* Ocupará metade da largura da tela */
-    height: 100vh; /* Ocupará toda a altura da tela */
+    width: 50vw; /* Ocupa metade da largura da tela */
+    height: 100vh; /* Ocupa toda a altura da tela */
     object-fit: cover; /* Garantir que a imagem se ajuste sem distorção */
 }
 
@@ -358,9 +358,9 @@ a{
 }
 
 .imagem_impacto {
-    width: 50vw; /* Ocupará metade da largura da tela */
-    height: 100vh; /* Ocupará toda a altura da tela */
-    object-fit: cover; /* Garantir que a imagem se ajuste sem distorção */
+    width: 50vw; 
+    height: 100vh; 
+    object-fit: cover; 
 }
 
 .texto{
@@ -396,9 +396,9 @@ a{
 }
 
 .imagem_impacto2 {
-    width: 50vw; /* Ocupará metade da largura da tela */
-    height: 100vh; /* Ocupará toda a altura da tela */
-    object-fit: cover; /* Garantir que a imagem se ajuste sem distorção */
+    width: 50vw; 
+    height: 100vh; 
+    object-fit: cover; 
 }
 
 .texto2{
@@ -479,7 +479,6 @@ footer {
     color: #fff;
     display: flex;
     align-items: center;
-    /* Centraliza verticalmente a imagem e o texto */
     font-size: 18px;
     margin-top: 10px;
     height: 60px;
@@ -491,7 +490,6 @@ footer .logo {
     align-items: center;
     position: absolute;
     left: 20px;
-    /* Posiciona a imagem no lado esquerdo do rodapé */
 }
 
 footer .logo img {
@@ -506,7 +504,6 @@ footer b {
     text-align: center;
     flex: 1;
     font-family: 'Karla', sans-serif;
-    /* Faz o parágrafo ocupar o espaço central */
 }
 
 #sec_gratuito{

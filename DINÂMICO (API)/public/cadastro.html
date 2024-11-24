@@ -49,11 +49,7 @@
         ipt_senhaconfirmada.disabled = true;
 
     function analisar() {
-        // if ((ipt_pergunta1 == '' && slc_respostas == '#' && ipt_pergunta3 == '') || (slc_respostas4 == '#' && slc_respostas5 == '#' && slc_respostas6 == '#')) {
-        //     div_msgFinal.innerHTML = `Todos os campos devem estar preenchidos!`;
-        //     return;
-        // }
-        // console.log("cliquei");
+
       var usuario = ipt_usuario.value;
       var email = ipt_email.value;
       var senha = ipt_senha.value;
@@ -69,11 +65,7 @@
       if (
         usuario == '' || email == '' || senha == '' || senha_conf == ''
       ) {
-            // div_msgFinal.innerHTML = `
-            // <span style="color: rgb(221, 85, 12);">
-            // Todos os campos devem estar preenchidos!    
-            // </span>
-            // `;
+
             console.log("preenchi");
             botao_cadastrar.disabled = true;
             botao_cadastrar.style.backgroundColor="rgb(172, 146, 248)";
@@ -147,7 +139,7 @@
         `; 
         v_senha2 = 0;
 
-      }   // checa se as senhas coincidem, se não exibe a mensagem "As senhas não coincidem" para o usuário
+      }   
       else{  
         div_mensagem_senha_confirmada.innerHTML = ``;
         v_senha2 = 1;
@@ -207,40 +199,4 @@
 
     }
 </script>
-    <!-- // // Array para armazenar empresas cadastradas para validação de código de ativação 
-    // let listaEmpresasCadastradas = [];
-
-    // function cadastrar() {
-    //     // aguardar();
-
-    //     //Recupere o valor da nova input pelo nome do id
-    //     // Agora vá para o método fetch logo abaixo
-    //     var nomeVar = ipt_usuario.value;
-    //     var emailVar = ipt_email.value;
-    //     var senhaVar = ipt_senha.value;
-    //     var confirmacaoSenhaVar = ipt_senhaconfirmada.value;
-
-    //     // Verificando se há algum campo em branco
-
-
-
-    //     // Enviando o valor da nova input
-    //     fetch("/usuarios/cadastrar", { //url chama função
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({
-    //             // crie um atributo que recebe o valor recuperado aqui
-    //             // Agora vá para o arquivo routes/usuario.js
-    //             nomeServer: nomeVar,
-    //             emailServer: emailVar,
-    //             senhaServer: senhaVar
-    //         }),
-    //     })
-
-    //     setTimeout(() => {
-    //         window.location = "login.html";
-    //     }, "2000");
-
-    // } -->
+  

@@ -74,19 +74,7 @@ function partipar() {
 }
 
 
-
-
-
-    // aguardar();
-
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-
-
-    // Verificando se há algum campo em branco
-
-
-    function cadastrar() {
+function cadastrar() {
 
         if (jafoi == 'sim') {
             fkPergunta1 = sessionStorage.getItem("fkPergunta1Mesmo");
@@ -126,7 +114,6 @@ function partipar() {
         }),
     }).then(function (resposta){
         if (resposta.ok) {
-;
             
             setTimeout(() => {
             window.location = "login.html";
@@ -153,7 +140,7 @@ function partipar() {
     fkPergunta3Server: fkPergunta3,
     usuarioServer: usuario,
     condicaoServer: eai
-});
+    });
     
 
 
@@ -261,24 +248,6 @@ function guardarPerguntas() {
     }
     
 }
-
-
-
-
-
-
-
-// alert(`${Pergunta1Index} armazenado no session storage`)
-
-
-
-    // sessionStorage.setItem("Pergunta2Mesmo", Pergunta5Index);
-    // alert(`${Pergunta2Index} armazenado no session storage`)
-
-
-
-    // sessionStorage.setItem("Pergunta3Mesmo", Pergunta6Index);
-    // alert(`${Pergunta3Index} armazenado no session storage`)
 
 
 
