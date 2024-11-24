@@ -112,7 +112,7 @@ a, button{
 .kpis{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-evenly;
     height: 100%;
     width: 45%;
@@ -149,7 +149,7 @@ a, button{
 
 .linha{
     display: flex;
-    border: 1px solid rgb(132, 97, 236);
+    border: 1px solid rgb(255, 255, 255);
     background-color: rgba(2, 7, 50, 0.338);
     justify-content: center;
     height: 50%;
