@@ -50,7 +50,9 @@ function guardarDados() {
 function conhecer() {
     var eai1 = 'conhecer';
     sessionStorage.setItem("eaiMesmo", eai1);
-
+    
+    mensagem_erro.innerHTML =
+        "Cadastro realizado com sucesso! Redirecionando para tela de Login..."
 
     setTimeout(() => {
         cadastrar();
@@ -62,7 +64,9 @@ function partipar() {
     var eai2 = 'participar';
     sessionStorage.setItem("eaiMesmo", eai2);
     
-
+    mensagem_erro.innerHTML =
+        "Cadastro realizado com sucesso! Redirecionando para tela de Login..."
+        
     setTimeout(() => {
         cadastrar();
     }, 3000);
@@ -122,8 +126,7 @@ function partipar() {
         }),
     }).then(function (resposta){
         if (resposta.ok) {
-            mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+;
             
             setTimeout(() => {
             window.location = "login.html";
