@@ -143,7 +143,7 @@
                     <div class="kpi1">
                         <p style="font-size: 26px;" id="div_mais_vai"></p>
                     </div>
-                    <div class="kpi2">
+                    <div class="kpi1">
                         <p style="font-size: 26px;" id="div_menos_vai"></p>
                     </div>
                 </div>
@@ -517,7 +517,7 @@ function conhecer() {
                     console.log(JSON.stringify(json));
 
                     setTimeout(function () {
-                        document.getElementById("div_menos_vai").innerHTML = `${json[0].Resposta}`;
+                        document.getElementById("div_menos_vai").innerHTML = `${json[1].Resposta}`;
                     }, 1000); // apenas para exibir o loading
 
                 });

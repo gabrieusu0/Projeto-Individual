@@ -194,8 +194,8 @@ SELECT
     ON p.idPergunta = respostas.fkPergunta
     WHERE pergunta = 'QUAL TIPO DE EVENTO CULTURAL MAIS DE INTERESSA?'
 	GROUP BY resposta
-	ORDER BY respostas 
-    LIMIT 1;
+	ORDER BY respostas desc
+    LIMIT 2;
     `;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
