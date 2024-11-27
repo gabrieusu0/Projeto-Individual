@@ -46,7 +46,6 @@ INSERT INTO pergunta (pergunta, isTeatro) VALUES
     ('QUAL MOTIVO PARA VOCÊ NUNCA TER IDO?', 'nao');
     
  SELECT * FROM cadastro;
- USE elbi;
  
  -- UPDATE cadastro SET oque_procura = '${conhecer}' WHERE idCadastro = LAST_INSERT_ID();
  -- CONHECER OU PARTICIPAR
@@ -210,7 +209,9 @@ SELECT
     WHERE pergunta = 'QUAL TIPO DE EVENTO CULTURAL MAIS DE INTERESSA?'
 	GROUP BY resposta
 	ORDER BY respostas desc
-    LIMIT 1;
+    LIMIT 2;
+    
+    select * from cadastro;
     
 SELECT 
 	respostas.resposta as Resposta,
