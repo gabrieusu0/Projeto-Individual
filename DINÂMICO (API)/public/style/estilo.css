@@ -71,6 +71,8 @@ body::-webkit-scrollbar {
     justify-content: center;
     text-align: center;
     width: 80%;
+    /* border: 1px solid white; */
+    
 }
 
 /* Texto principal */
@@ -92,6 +94,7 @@ body::-webkit-scrollbar {
     border-bottom-left-radius: 20px; 
     border: none;
     font-size: 15px;
+    /* border: 1px solid white; */
 }
 
 input::placeholder { /*pseudoclasse, mexe dentro do atributo*/
@@ -201,6 +204,7 @@ button{
     font-family: 'Lora', sans-serif;
     margin-left: 150px;
     margin-bottom: 80px;
+    /* border: 1px solid white; */
 }
 
 .imagemCadastro {
@@ -234,6 +238,7 @@ button{
     font-family: 'Lora', sans-serif;
     margin-left: 150px;
     margin-bottom: 80px;
+    /* border: 1px solid white; */
 }
 
 
@@ -276,6 +281,7 @@ button{
     height: 50%;
     width: 70%;
     justify-content: space-between;
+    /* border: 1px solid white; */
 }
 
 .procura img{
@@ -317,6 +323,7 @@ button{
     justify-content: center;
     text-align: center;
     width: 80%;
+    /* border: 1px solid white; */
 }
 
 /* Texto principal */
