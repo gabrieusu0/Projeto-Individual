@@ -234,6 +234,13 @@ SELECT
 	COUNT(ja_foi) as 'Contador' FROM cadastro
 	GROUP BY ja_foi;
     
+    
+    
+/*
+Para cada linha, verifica se o valor da coluna ja_foi é igual a 'sim'.
+Se for, retorna 1.
+Se não for, retorna NULL
+*/
     SELECT 
     (COUNT(CASE WHEN ja_foi = 'sim' THEN 1 END) / COUNT(*)) * 10 AS 'A cada 10 pessoas'
 FROM cadastro;
